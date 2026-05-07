@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Trekking | Morix Beyond Zanzibar</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome CDN for Professional Flat Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Brand Configuration -->
+
+    <style>
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
+        ::-webkit-scrollbar-thumb { background: #228B22; border-radius: 10px; }
+        html { scroll-behavior: smooth; }
+        
+        /* Smooth transitions for image galleries */
+        .gallery-slide { transition: opacity 1s ease-in-out; }
+    </style>
+</head>
+<body class="font-poppins bg-zinc-50 text-gray-800 overflow-x-hidden pt-[100px] md:pt-[120px] cursor-default antialiased select-none">
+
+ 
+
+<div id="header-container" class="absolute w-full z-50 top-0 left-0"></div>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: EDITORIAL OVERLAPPING CARD MODAL   -->
+    <!-- ========================================== -->
+    <div id="itinerary-modal" class="fixed top-[100px] md:top-[120px] inset-x-0 bottom-0 z-[40] hidden opacity-0 transition-opacity duration-500 bg-gray-100 overflow-y-auto modal-scroll select-text">
+        
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 relative">
+            
+            <!-- Floating Close Button -->
+            <div class="absolute top-12 right-8 md:right-12 z-[110]">
+                <button id="close-modal" class="w-12 h-12 bg-white/90 hover:bg-red-600 text-black hover:text-white backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-xl border border-gray-200">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 1. THE IMAGE GALLERY CARD -->
+            <div class="w-full h-[350px] md:h-[500px] lg:h-[650px] bg-black rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.15)] relative group border-[6px] border-white z-10 mx-auto">
+                <!-- 4 Unique Images -->
+                <div id="modal-gallery" class="absolute inset-0"></div>
+                
+                <!-- Gradients for Text & Arrows -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none z-10"></div>
+                
+                <div class="absolute top-6 left-6 md:top-8 md:left-8 z-20">
+                    <span id="modal-duration" class="bg-black/50 backdrop-blur-md text-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-4 py-2 rounded-full border border-white/20"></span>
+                </div>
+
+                <!-- Dots -->
+                <div id="modal-dots" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                    <!-- Dots Injected via JS -->
+                </div>
+
+                <!-- Arrows -->
+                <button id="prev-slide" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[30] w-10 h-10 md:w-14 md:h-14 bg-white/20 hover:bg-forest text-white rounded-full flex items-center justify-center transition-all cursor-pointer backdrop-blur-md opacity-0 group-hover:opacity-100 shadow-lg border border-white/30">
+                    <i class="fa-solid fa-chevron-left text-sm md:text-lg"></i>
+                </button>
+                <button id="next-slide" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[30] w-10 h-10 md:w-14 md:h-14 bg-white/20 hover:bg-forest text-white rounded-full flex items-center justify-center transition-all cursor-pointer backdrop-blur-md opacity-0 group-hover:opacity-100 shadow-lg border border-white/30">
+                    <i class="fa-solid fa-chevron-right text-sm md:text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 2. THE CONTENT CARD (Overlaps the image using negative margin) -->
+            <div class="relative z-20 w-[95%] lg:w-[90%] mx-auto -mt-20 md:-mt-32 bg-white/95 backdrop-blur-2xl rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-white flex flex-col">
+                
+                <!-- Title Header -->
+                <div class="mb-12 md:mb-16 text-center max-w-4xl mx-auto border-b border-gray-100 pb-10">
+                    <h1 id="modal-title" class="font-playfair text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight mb-6"></h1>
+                    <p id="modal-highlight" class="text-gray-500 text-sm md:text-lg font-light leading-relaxed"></p>
+                </div>
+
+                <!-- Professional Flexbox Layout for Body -->
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start w-full">
+                    
+                    <!-- LEFT FLEX: Itinerary Timeline -->
+                    <div class="flex-1 w-full">
+                        <h3 class="font-playfair text-2xl md:text-3xl font-bold text-black mb-8"><i class="fa-solid fa-map-location-dot text-ocean mr-3"></i> Route Itinerary</h3>
+                        <div class="space-y-8 pl-2" id="modal-itinerary">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- RIGHT FLEX: Details & Booking CTA -->
+                    <div class="w-full lg:w-[400px] xl:w-[450px] shrink-0 flex flex-col gap-8 sticky top-10">
+                        
+                        <!-- Details Block -->
+                        <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8" id="modal-details">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <!-- Included / Excluded Block -->
+                        <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8">
+                            <div class="mb-8">
+                                <h4 class="font-playfair text-xl font-bold text-forest mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check"></i> Included
+                                </h4>
+                                <div id="modal-includes" class="text-gray-600 text-sm space-y-2 font-light"></div>
+                            </div>
+                            <div class="pt-6 border-t border-gray-200">
+                                <h4 class="font-playfair text-xl font-bold text-red-500 mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-xmark"></i> Excluded
+                                </h4>
+                                <div id="modal-excludes" class="text-gray-600 text-sm space-y-2 font-light"></div>
+                            </div>
+                        </div>
+
+                        <!-- Price Tag & CTA Block -->
+                        <div class="bg-alpine rounded-[2rem] p-8 text-center relative overflow-hidden shadow-2xl mt-4 border border-alpine">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-forest/30 rounded-full blur-3xl pointer-events-none"></div>
+                            
+                            <div class="relative z-10">
+                                <span class="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mb-2">Total Expedition Price</span>
+                                <span id="modal-bottom-price" class="font-playfair text-4xl md:text-5xl font-bold text-white mb-8 block"></span>
+                                
+                                <div class="flex flex-col gap-4">
+                                    <a href="https://wa.me/255XXXXXXXXX" class="w-full bg-forest hover:bg-white hover:text-black text-white px-6 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer">
+                                        <i class="fa-solid fa-calendar-check"></i> Add to My Booking
+                                    </a>
+                                    <button id="btn-go-back" class="w-full bg-transparent border border-white/20 hover:bg-white/10 text-white px-6 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-arrow-left"></i> Go Back
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ========================================== -->
+
+    <!-- MAIN PAGE CONTENT (View 1) -->
+    <main class="w-full overflow-hidden">
+        
+        <!-- 1. HERO SECTION -->
+        <section class="relative h-[calc(100vh-100px)] md:h-[calc(100vh-120px)] min-h-[600px] w-full flex flex-col justify-center overflow-hidden bg-alpine">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1522199670076-2852f80289c3?q=80&w=2070" class="w-full h-full object-cover opacity-50 pointer-events-none" alt="Mount Kilimanjaro">
+                <div class="absolute inset-0 bg-gradient-to-t from-alpine via-alpine/30 to-transparent pointer-events-none"></div>
+            </div>
+            
+            <div class="relative z-20 max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex items-center fade-in-scroll">
+                <div class="max-w-4xl text-left border-l-4 border-ocean pl-6 md:pl-10">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest backdrop-blur-md border border-white/20 text-yellow-400 font-bold tracking-widest uppercase text-[10px] md:text-xs mb-6 shadow-sm">
+                        <i class="fa-solid fa-location-arrow text-white"></i> The Roof of Africa
+                    </span>
+                    <h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] text-ocean font-black leading-none drop-shadow-2xl mb-8">
+                        ASCEND <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-forest to-ocean font-light">Tanzania.</span>
+                    </h1>
+                    <p class="text-black text-sm md:text-xl font-light drop-shadow-md leading-relaxed max-w-2xl">
+                        Conquer Africa’s highest peaks with our professionally guided, fully supported climbing expeditions. Comfort, safety, and unforgettable summits.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DESTINATIONS OVERVIEW -->
+        <section class="py-24 bg-white relative overflow-hidden select-text border-b border-gray-100">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 fade-in-scroll">
+                    <div>
+                        <span class="text-ocean font-bold tracking-widest uppercase text-[10px] md:text-xs block mb-2"><i class="fa-solid fa-map-pin mr-2"></i> The Peaks</span>
+                        <h2 class="font-playfair text-5xl md:text-7xl font-bold text-black">Our Mountains</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Kilimanjaro -->
+                    <div class="bg-ocean rounded-[3rem] p-10 md:p-14 border border-gray-200 shadow-sm group hover:bg-forest transition-colors duration-500">
+                        <div class="flex justify-between items-start mb-8">
+                            <i class="fa-solid fa-mountain-sun text-4xl text-yellow-400 group-hover:text-white transition-colors"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-black group-hover:text-gray-300 bg-yellow-400 group-hover:bg-ocean group-hover:text-white px-4 py-2 rounded-full border border-gray-200 group-hover:border-transparent">5,895 Meters</span>
+                        </div>
+                        <h3 class="font-playfair text-4xl font-bold text-yellow-400 mb-4 group-hover:text-white transition-colors">Mount Kilimanjaro</h3>
+                        <p class="text-white  font-light leading-relaxed text-base">The iconic Roof of Africa. We offer multiple scenic routes to the summit, ensuring proper acclimatization and unparalleled adventure for trekkers of all experience levels.</p>
+                    </div>
+
+                    <!-- Mount Meru -->
+                    <div class="bg-forest rounded-[3rem] p-10 md:p-14 border border-gray-200 shadow-sm group hover:bg-ocean transition-colors duration-500">
+                        <div class="flex justify-between items-start mb-8">
+                            <i class="fa-solid fa-volcano text-4xl text-yellow-400 group-hover:text-white transition-colors"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-black group-hover:text-white  bg-yellow-400 group-hover:bg-forest px-4 py-2 rounded-full border border-gray-200 group-hover:border-transparent">4,562 Meters</span>
+                        </div>
+                        <h3 class="font-playfair text-4xl font-bold text-yellow-400 mb-4 group-hover:text-white transition-colors">Mount Meru</h3>
+                        <p class="text-white group-hover:text-gray-100 font-light leading-relaxed text-base">A beautiful, less crowded, and dramatically steep climbing destination near Arusha. Perfect for breathtaking crater views and excellent acclimatization prior to a Kilimanjaro attempt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TREKKING PACKAGES (The "Summit Stagger" Editorial Layout) -->
+        <section class="py-32 bg-zinc-50 relative overflow-hidden select-text border-t border-gray-200">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                
+                <div class="text-center mb-24 md:mb-32 fade-in-scroll">
+                    <span class="text-forest font-bold tracking-widest uppercase text-xs block mb-4"><i class="fa-solid fa-route mr-2"></i> Choose Your Path</span>
+                    <h2 class="font-playfair text-5xl md:text-8xl font-black text-black tracking-tight">Expeditions</h2>
+                </div>
+
+                <!-- Overlapping Staggered List injected via JS -->
+                <div class="space-y-32 md:space-y-40" id="packages-container">
+                    <!-- Dynamic Rows Here -->
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <!-- Data & Logic Engine -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Database: EVERY package has EXACTLY 4 UNIQUE images. No sharing.
+            const packages = [
+                {
+                    id: 1,
+                    title: "8-Day Lemosho Route",
+                    subtitle: "Scenic & High Success Rate",
+                    duration: "8 Days",
+                    price: "$2,390 / Adult",
+                    gallery: [
+                        "https://images.unsplash.com/photo-1522199670076-2852f80289c3?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=2000"
+                    ],
+                    highlight: "The Lemosho Route is widely considered the most scenic and rewarding way to climb Mount Kilimanjaro. Starting on the remote western side, it offers breathtaking landscapes and excellent acclimatization.",
+                    itinerary: `
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 1: Arusha – Londorossi Gate – Mti Mkubwa</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Scenic drive from Arusha, register, and trek through lush rainforest. Home to colobus monkeys.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 3-4 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 2,650m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 2: Mti Mkubwa – Shira 1 Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Climb steadily through forest into the moorland zone, reaching the wide Shira Plateau.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 5-6 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 3,610m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 3: Shira 1 – Shira 2 Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">A gentle walk across the plateau helps your body adjust to altitude while enjoying panoramic scenery.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 3-4 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 3,850m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 4: Shira 2 – Lava Tower – Barranco Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Climb to Lava Tower (4,600m) for crucial acclimatization, then descend into the dramatic Barranco Valley.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 6-8 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> Up to 4,600m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 5: Barranco – Karanga Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Conquer the famous Barranco Wall, a fun scramble with incredible views, then trek to Karanga Camp.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 4-5 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 4,035m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 6: Karanga – Barafu Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Hike to Barafu Base Camp, your final stop before the summit attempt. Rest, hydrate, and prepare.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 3-4 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 4,640m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-ocean pl-6 py-2 bg-ocean/5 rounded-r-xl">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 7: Summit Day – Uhuru Peak – Mweka Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Start the ascent around midnight. Reach Stella Point for sunrise, then continue to Uhuru Peak (5,895m), the highest point in Africa. Celebrate and descend.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-white bg-ocean px-3 py-1.5 rounded-md inline-block"><i class="fa-solid fa-clock mr-1"></i> 12-15 hrs | <i class="fa-solid fa-mountain mx-1"></i> 5,895m</div>
+                        </div>
+                        <div class="mb-2 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 8: Mweka Camp – Arusha</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed">Descend through lush rainforest to Mweka Gate. Receive your summit certificate and transfer back to Arusha.</p>
+                        </div>
+                    `,
+                    details: `
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-star text-yellow-500 mr-2"></i> Ideal For</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> First-time climbers</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Photography enthusiasts</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-bullseye text-red-500 mr-2"></i> Why Choose This?</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Most scenic route</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Best acclimatization</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Less crowded trail</li>
+                            </ul>
+                        </div>
+                    `,
+                    includes: `<li>7 nights camping (high-quality tents)</li><li>2 nights hotel in Arusha (before/after)</li><li>All meals & purified water</li><li>All mountain transfers</li><li>National Park & rescue fees</li><li>Professional guide, porters, cook</li><li>Oxygen & first-aid kits</li>`,
+                    excludes: `<li>International/domestic flights</li><li>Personal gear (rental available)</li><li>Crew tips ($300–350 recommended)</li><li>Travel insurance & visa</li>`
+                },
+                {
+                    id: 2,
+                    title: "7-Day Machame Route",
+                    subtitle: "The Adventurous Whiskey Route",
+                    duration: "7 Days",
+                    price: "$2,050 / Adult",
+                    gallery: [
+                        "https://images.unsplash.com/photo-1506744626753-14c1e405103d?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2000"
+                    ],
+                    highlight: "Famously known as the “Whiskey Route,” this is one of the most popular and scenic trails. It is adventurous, physically demanding, and offers excellent acclimatization.",
+                    itinerary: `
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 1: Arusha – Machame Gate – Machame Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Registration and trek through lush rainforest.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 5-7 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 2,835m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 2: Machame Camp – Shira Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Climb from forest into heath and moorland, with wide views across the plateau.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 4-6 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 3,850m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 3: Shira Camp – Lava Tower – Barranco</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">A key acclimatization day. Trek up to Lava Tower (4,600m), then descend to sleep low.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 4: Barranco Camp – Karanga Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Climb the famous Barranco Wall, a fun but non-technical scramble.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 5: Karanga Camp – Barafu Camp</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Shorter hike to Base Camp. Rest, hydrate, and prepare for your summit attempt.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-ocean pl-6 py-2 bg-ocean/5 rounded-r-xl">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 6: Summit Day – Uhuru Peak – Mweka</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Midnight start to the top of Africa (5,895m). After celebrating, descend to Mweka Camp.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-white bg-ocean px-3 py-1.5 rounded-md inline-block"><i class="fa-solid fa-clock mr-1"></i> 12-15 hrs | <i class="fa-solid fa-mountain mx-1"></i> 5,895m</div>
+                        </div>
+                        <div class="mb-2 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 7: Mweka Camp – Arusha</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed">Descend to gate, collect certificate, and return to hotel.</p>
+                        </div>
+                    `,
+                    details: `
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-star text-yellow-500 mr-2"></i> Ideal For</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Fit trekkers</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Adventurous climbers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-bullseye text-red-500 mr-2"></i> Why Choose This?</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Highly scenic trail</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Excellent acclimatization</li>
+                            </ul>
+                        </div>
+                    `,
+                    includes: `<li>Park entry & camping fees</li><li>Pro guide, cook & porters</li><li>Quality tents & dining equipment</li><li>2 nights hotel in Arusha</li><li>All meals & water on trek</li><li>Airport & gate transfers</li>`,
+                    excludes: `<li>Crew tips ($300–350)</li><li>Personal gear</li><li>Travel insurance & visa</li><li>International flights</li>`
+                },
+                {
+                    id: 3,
+                    title: "6-Day Marangu Route",
+                    subtitle: "The Coca-Cola Route (Huts)",
+                    duration: "6 Days",
+                    price: "$1,790 / Adult",
+                    gallery: [
+                        "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1483728642387-6c3ba6c6b870?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1513553404607-988bf2703777?q=80&w=2000"
+                    ],
+                    highlight: "The only route offering mountain hut accommodation. Ideal for trekkers preferring solid shelter, well-defined paths, and a steady ascent profile.",
+                    itinerary: `
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 1: Arusha – Marangu Gate – Mandara Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Trek through lush rainforest to the first set of sleeping huts.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 4-5 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 2,700m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 2: Mandara Hut – Horombo Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Leave the forest for heath and moorland zones with expanding views of Mawenzi Peak.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 3: Acclimatization at Horombo Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">A crucial day for altitude adaptation. Enjoy a short hike toward Zebra Rocks.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 4: Horombo Hut – Kibo Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Cross alpine desert to the base of the summit.</p>
+                        </div>
+                        <div class="mb-8 border-l-4 border-ocean pl-6 py-2 bg-ocean/5 rounded-r-xl">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 5: Summit Day & Return to Horombo</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Midnight push to Uhuru Peak. Descend back to Horombo for sleep.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-white bg-ocean px-3 py-1.5 rounded-md inline-block"><i class="fa-solid fa-clock mr-1"></i> 12-15 hrs | <i class="fa-solid fa-mountain mx-1"></i> 5,895m</div>
+                        </div>
+                        <div class="mb-2 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 6: Horombo Hut – Arusha</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed">Descend to gate, receive certificate, return to Arusha.</p>
+                        </div>
+                    `,
+                    details: `
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-star text-yellow-500 mr-2"></i> Ideal For</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Comfort-focused trekkers</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> First-time climbers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-bullseye text-red-500 mr-2"></i> Why Choose This?</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Sleep in mountain huts</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Gradual ascent profile</li>
+                            </ul>
+                        </div>
+                    `,
+                    includes: `<li>5 nights hut accommodation</li><li>2 nights hotel in Arusha</li><li>All meals & hot beverages</li><li>Private transport to gate</li><li>Park & rescue fees</li><li>Certified guide & porters</li>`,
+                    excludes: `<li>International flights</li><li>Crew tips ($250–300)</li><li>Personal gear</li><li>Travel insurance</li>`
+                },
+                {
+                    id: 4,
+                    title: "4-Day Mount Meru Trek",
+                    subtitle: "Ultimate Acclimatization Peak",
+                    duration: "4 Days",
+                    price: "$850 / Adult",
+                    gallery: [
+                        "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1464278533981-50106e6176b1?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1425342605259-25d80e320565?q=80&w=2000"
+                    ],
+                    highlight: "A beautiful and less crowded trekking destination near Arusha. Mount Meru provides dramatic scenery, rich wildlife, and an excellent acclimatization climb before Kilimanjaro.",
+                    itinerary: `
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 1: Momella Gate to Miriakamba Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Trek through open grassland and dense forest. High chance of spotting buffalo, giraffes, and elephants alongside an armed ranger.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 4-5 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 2,500m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 2: Miriakamba to Saddle Hut</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Steep climb along the saddle with spectacular views of the Meru Crater and the Ash Cone.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-ocean bg-ocean/5 px-3 py-1.5 rounded-md inline-block border border-ocean/10"><i class="fa-solid fa-clock mr-1"></i> 3-4 hrs | <i class="fa-solid fa-arrow-up-right-dots mx-1"></i> 3,500m</div>
+                        </div>
+                        <div class="mb-8 border-l-4 border-ocean pl-6 py-2 bg-ocean/5 rounded-r-xl">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 3: Summit Day – Socialist Peak</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-3">Early morning start to Socialist Peak (4,562m). Experience a breathtaking sunrise over Kilimanjaro in the distance. Descend back to Miriakamba Hut.</p>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-white bg-ocean px-3 py-1.5 rounded-md inline-block"><i class="fa-solid fa-mountain mr-1"></i> 4,562m</div>
+                        </div>
+                        <div class="mb-2 border-l-4 border-gray-100 pl-6 py-2">
+                            <h4 class="font-playfair text-xl font-bold text-black mb-2">Day 4: Descend to Momella Gate</h4>
+                            <p class="text-gray-500 font-light text-sm leading-relaxed">Easy descent through the forest, complete park formalities, and transfer back to Arusha.</p>
+                        </div>
+                    `,
+                    details: `
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-star text-yellow-500 mr-2"></i> Ideal For</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Pre-Kilimanjaro acclimatization</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Wildlife lovers (walking safari)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-playfair text-lg font-bold text-black mb-4"><i class="fa-solid fa-bullseye text-red-500 mr-2"></i> Why Choose This?</h4>
+                            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Dramatic steep crater views</li>
+                                <li><i class="fa-solid fa-caret-right text-ocean mr-2"></i> Zero crowds compared to Kili</li>
+                            </ul>
+                        </div>
+                    `,
+                    includes: `<li>Park entry & hut fees</li><li>Armed Ranger (mandatory for wildlife)</li><li>Pro guide, cook & porters</li><li>All meals on the mountain</li><li>Transfers from Arusha</li>`,
+                    excludes: `<li>International flights</li><li>Crew tips</li><li>Personal climbing gear</li>`
+                }
+            ];
+
+            const container = document.getElementById("packages-container");
+
+            // Build View 1 Layout (Main Cards)
+            packages.forEach((pkg, index) => {
+                const isEven = index % 2 === 0;
+                
+                // Build 4 Images for the View 1 Card
+                const cardGalleryHtml = pkg.gallery.map((img, i) => `
+                    <img src="${img}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out view1-img-${pkg.id} ${i === 0 ? 'opacity-100' : 'opacity-0'} group-hover:scale-105 transition-transform duration-[2000ms]" alt="${pkg.title}">
+                `).join('');
+
+                const cardHTML = `
+                    <div class="relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center w-full group fade-in-scroll pb-10">
+                        
+                        <!-- Massive Image Block -->
+                        <div class="w-full lg:w-7/12 h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl relative z-10 cursor-pointer btn-open-modal" data-id="${pkg.id}">
+                            ${cardGalleryHtml}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                            
+                            <!-- Large Background Number -->
+                            <div class="absolute top-6 ${isEven ? 'right-8' : 'left-8'} text-white/20 font-playfair font-black text-6xl md:text-[8rem] leading-none pointer-events-none select-none">
+                                0${index + 1}
+                            </div>
+                        </div>
+
+                        <!-- Floating Glassmorphism Content Block -->
+                        <div class="w-11/12 lg:w-6/12 -mt-12 lg:mt-0 ${isEven ? 'lg:-ml-16' : 'lg:-mr-16'} bg-white/95 backdrop-blur-2xl p-8 lg:p-12 rounded-[2rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative z-20 group-hover:shadow-[0_20px_50px_rgba(0,105,148,0.1)] transition-shadow duration-500">
+                            
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="bg-forest/10 text-forest font-bold px-3 py-1.5 rounded-md text-[10px] uppercase tracking-widest"><i class="fa-regular fa-clock mr-1"></i> ${pkg.duration}</span>
+                            </div>
+
+                            <h3 class="font-playfair text-3xl md:text-4xl font-bold text-black mb-2 leading-tight">${pkg.title}</h3>
+                            <span class="text-ocean text-[10px] font-bold uppercase tracking-widest mb-4 block">${pkg.subtitle}</span>
+                            
+                            <p class="text-gray-500 font-light text-sm leading-relaxed mb-8">${pkg.highlight}</p>
+                            
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-gray-100 pt-6 mt-auto gap-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-0.5">Starting From</span>
+                                    <span class="font-bold text-2xl text-black">${pkg.price}</span>
+                                </div>
+                                <button class="btn-open-modal w-full sm:w-auto bg-black hover:bg-ocean text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer" data-id="${pkg.id}">
+                                    Explore Route <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // Auto-Animate View 1 Images Every 10 Seconds
+            packages.forEach(pkg => {
+                let currentView1Img = 0;
+                const view1Imgs = document.querySelectorAll(`.view1-img-${pkg.id}`);
+                
+                if(view1Imgs.length > 0) {
+                    setInterval(() => {
+                        view1Imgs[currentView1Img].classList.remove('opacity-100');
+                        view1Imgs[currentView1Img].classList.add('opacity-0');
+                        currentView1Img = (currentView1Img + 1) % view1Imgs.length;
+                        view1Imgs[currentView1Img].classList.remove('opacity-0');
+                        view1Imgs[currentView1Img].classList.add('opacity-100');
+                    }, 10000); // 10 seconds
+                }
+            });
+
+            // Modal Logic & Animation Engine (View 2)
+            const modal = document.getElementById('itinerary-modal');
+            const modalGallery = document.getElementById('modal-gallery');
+            const modalDots = document.getElementById('modal-dots');
+            let galleryInterval;
+            let currentImg = 0;
+            let dynamicGallery = [];
+
+            function updateGallery(index) {
+                const slides = modalGallery.querySelectorAll('.gallery-slide');
+                const dots = modalDots.querySelectorAll('.dot');
+                
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('opacity-0', 'z-0');
+                        slide.classList.add('opacity-100', 'z-10');
+                    } else {
+                        slide.classList.remove('opacity-100', 'z-10');
+                        slide.classList.add('opacity-0', 'z-0');
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.remove('bg-white/40');
+                        dot.classList.add('bg-white', 'w-5');
+                    } else {
+                        dot.classList.remove('bg-white', 'w-5');
+                        dot.classList.add('bg-white/40');
+                    }
+                });
+                currentImg = index;
+            }
+
+            function nextImage() {
+                if(!dynamicGallery.length) return;
+                let nextIndex = (currentImg + 1) % dynamicGallery.length;
+                updateGallery(nextIndex);
+            }
+
+            function prevImage() {
+                if(!dynamicGallery.length) return;
+                let prevIndex = (currentImg - 1 + dynamicGallery.length) % dynamicGallery.length;
+                updateGallery(prevIndex);
+            }
+
+            // Bulletproof Event Delegation
+            document.body.addEventListener('click', (e) => {
+                
+                // 1. OPEN MODAL (View 2)
+                const openBtn = e.target.closest('.btn-open-modal');
+                if (openBtn) {
+                    e.preventDefault();
+                    const id = parseInt(openBtn.getAttribute('data-id'));
+                    const pkg = packages.find(p => p.id === id);
+                    
+                    if(pkg) {
+                        document.getElementById('modal-duration').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> ${pkg.duration}`;
+                        document.getElementById('modal-title').innerText = pkg.title;
+                        document.getElementById('modal-highlight').innerText = pkg.highlight;
+                        document.getElementById('modal-itinerary').innerHTML = pkg.itinerary;
+                        document.getElementById('modal-details').innerHTML = pkg.details || '';
+                        document.getElementById('modal-bottom-price').innerText = pkg.price;
+                        
+                        document.getElementById('modal-includes').innerHTML = `<ul class="list-none space-y-2.5">${pkg.includes.replace(/<li>/g, '<li class="flex gap-3 items-start"><i class="fa-solid fa-check text-forest mt-1 text-[10px] shrink-0"></i><span>').replace(/<\/li>/g, '</span></li>')}</ul>`;
+                        document.getElementById('modal-excludes').innerHTML = `<ul class="list-none space-y-2.5">${pkg.excludes.replace(/<li>/g, '<li class="flex gap-3 items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 text-[10px] shrink-0"></i><span>').replace(/<\/li>/g, '</span></li>')}</ul>`;
+
+                        // Build View 2 Gallery (Exactly 4 images)
+                        dynamicGallery = pkg.gallery;
+                        modalGallery.innerHTML = dynamicGallery.map((src, i) => 
+                            `<div class="absolute inset-0 gallery-slide ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}">
+                                <img src="${src}" class="w-full h-full object-cover pointer-events-none" alt="Trek Detail">
+                            </div>`
+                        ).join('');
+
+                        modalDots.innerHTML = dynamicGallery.map((_, i) => 
+                            `<button class="dot h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'w-5 bg-white' : 'w-2 bg-white/40'}"></button>`
+                        ).join('');
+
+                        currentImg = 0;
+                        clearInterval(galleryInterval);
+                        
+                        // Switch to 10-Second interval for View 2 as requested
+                        setTimeout(() => {
+                            if(!document.getElementById('itinerary-modal').classList.contains('hidden')){
+                                nextImage();
+                                galleryInterval = setInterval(nextImage, 10000); 
+                            }
+                        }, 10000); 
+
+                        document.querySelector('.modal-scroll').scrollTop = 0;
+                        modal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden'; 
+                        
+                        setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+                    }
+                    return;
+                }
+
+                // 2. CLOSE MODAL / GO BACK
+                const closeBtnNode = e.target.closest('#close-modal') || e.target.closest('#btn-go-back');
+                if (closeBtnNode) {
+                    e.preventDefault();
+                    modal.classList.add('opacity-100');
+                    clearInterval(galleryInterval); 
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }, 500);
+                    return;
+                }
+
+                // 3. NAVIGATION ARROWS & DOTS
+                if (e.target.closest('#prev-slide')) { e.preventDefault(); prevImage(); clearInterval(galleryInterval); galleryInterval = setInterval(nextImage, 10000); return; }
+                if (e.target.closest('#next-slide')) { e.preventDefault(); nextImage(); clearInterval(galleryInterval); galleryInterval = setInterval(nextImage, 10000); return; }
+                
+                const dotNode = e.target.closest('.dot');
+                if(dotNode) {
+                    e.preventDefault();
+                    const dotsArray = Array.from(modalDots.querySelectorAll('.dot'));
+                    updateGallery(dotsArray.indexOf(dotNode));
+                    clearInterval(galleryInterval);
+                    galleryInterval = setInterval(nextImage, 10000);
+                    return;
+                }
+            });
+
+            // Smooth Two-Way Scroll Animation Observer
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    } else {
+                        // Reset when out of view so it animates when scrolling back up
+                        entry.target.classList.remove('opacity-100', 'translate-y-0');
+                        entry.target.classList.add('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Apply observer after render
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-scroll').forEach(el => {
+                    el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-[800ms]', 'ease-out');
+                    scrollObserver.observe(el);
+                });
+            }, 100);
+        });
+    </script>
+
+    <script src="animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

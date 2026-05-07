@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanzibar Experiences | Morix Beyond Zanzibar</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Flat Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#003C63',
+                        sunset: '#F27D57',
+                        luxury: '#0a0a0a', /* Deep 2080 Black */
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Invisible Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #F27D57; border-radius: 10px; }
+        html { scroll-behavior: smooth; background-color: #0a0a0a; color: white; }
+        
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Object Contain Backgrounds for perfect framing */
+        .framed-image-container {
+            background-color: #050505; /* Deep black to frame the image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="font-poppins bg-luxury text-gray-200 overflow-x-hidden pt-[100px] md:pt-[120px] antialiased">
+
+    <!-- FIXED HEADER (Guaranteed to stay on scroll) -->
+    <div class="fixed w-full z-[1000] top-0 left-0 bg-luxury/90 backdrop-blur-xl border-b border-white/10 shadow-2xl h-[100px] md:h-[120px] flex items-center">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12 w-full flex items-center justify-between">
+            <div class="font-playfair font-bold text-2xl md:text-3xl tracking-widest uppercase text-white flex items-center gap-3">
+                <i class="fa-solid fa-compass text-sunset"></i> Makayo
+            </div>
+            <div class="hidden md:flex gap-10 font-medium text-xs tracking-widest uppercase">
+                <span class="text-white font-bold border-b-2 border-sunset pb-1 cursor-pointer">Zanzibar Tours</span>
+                <span class="text-gray-400 hover:text-sunset cursor-pointer transition-colors">Safaris</span>
+                <span class="text-gray-400 hover:text-sunset cursor-pointer transition-colors">Trekking</span>
+            </div>
+            <div class="md:hidden text-2xl text-white cursor-pointer">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: FULL-SCREEN CINEMATIC MODAL        -->
+    <!-- ========================================== -->
+    <div id="activities-modal" class="fixed inset-0 z-[2000] hidden flex-col bg-luxury overflow-y-auto modal-scroll">
+        
+        <!-- Sticky Modal Header -->
+        <div class="sticky top-0 w-full h-24 bg-luxury/95 backdrop-blur-xl border-b border-white/10 z-[110] flex items-center justify-between px-6 md:px-12 shrink-0">
+            <div class="flex items-center gap-4">
+                <span id="modal-service-icon" class="text-sunset text-2xl"></span>
+                <span id="modal-service-title" class="font-playfair font-bold text-xl md:text-3xl text-white tracking-widest uppercase"></span>
+            </div>
+            <div class="flex gap-4">
+                <button id="btn-go-back" class="hidden sm:flex items-center gap-2 bg-transparent border border-white/20 hover:border-white text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+                <button id="close-modal" class="w-12 h-12 bg-white/10 hover:bg-sunset text-white rounded-full flex items-center justify-center transition-all shadow-lg border border-white/20">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Content (The Activities) -->
+        <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 py-16">
+            
+            <div class="mb-16 max-w-4xl">
+                <h2 class="font-playfair text-4xl md:text-6xl font-black text-white leading-tight mb-6">Explore <br><span class="italic text-sunset font-light">The Activities.</span></h2>
+                <p id="modal-service-desc" class="text-gray-400 font-light text-lg md:text-xl leading-relaxed"></p>
+            </div>
+
+            <!-- Activities Zig-Zag List injected via JS -->
+            <div class="space-y-12 md:space-y-20" id="modal-activities-list"></div>
+
+        </div>
+    </div>
+    <!-- ========================================== -->
+
+    <!-- MAIN PAGE CONTENT (View 1) -->
+    <main class="w-full overflow-hidden">
+        
+        <!-- 1. HERO SECTION -->
+        <section class="relative h-[calc(100vh-100px)] md:h-[calc(100vh-120px)] min-h-[600px] w-full flex flex-col justify-center overflow-hidden bg-luxury">
+            <!-- Framed Background Image (No Cropping) -->
+            <div class="absolute inset-0 z-0 framed-image-container p-4 md:p-10">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070" class="w-full h-full object-contain opacity-70 rounded-[2rem]" alt="Zanzibar Ocean">
+            </div>
+            
+            <div class="relative z-20 max-w-[1600px] mx-auto px-6 lg:px-12 w-full text-center animate-fade-in-up">
+                <span class="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-panel text-white font-bold tracking-widest uppercase text-[10px] md:text-xs mb-8 shadow-2xl border-sunset/50 text-sunset">
+                    <i class="fa-solid fa-sparkles"></i> Discover the Magic
+                </span>
+                <h1 class="font-playfair text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] text-white font-black leading-[0.85] tracking-tighter drop-shadow-2xl mb-8">
+                    ZANZIBAR <br>
+                    <span class="italic font-light tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-sunset to-white">Tours.</span>
+                </h1>
+                <p class="text-gray-300 text-base md:text-xl font-light drop-shadow-md leading-relaxed max-w-3xl mx-auto glass-panel p-6 rounded-2xl">
+                    Experience the beauty, culture, and adventure of Zanzibar through our carefully curated tours. From crystal-clear waters to rich cultural heritage.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. THE SERVICES (Editorial Sticky-Scroll Moodboard) -->
+        <section class="py-32 relative overflow-hidden" id="services-container">
+            <!-- Services Injected via JS -->
+        </section>
+
+    </main>
+
+    <!-- Script Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Database strictly following the requested text
+            const servicesData = [
+                {
+                    id: 'water-sports',
+                    title: "Water Sports",
+                    icon: "fa-water",
+                    desc: "Dive into excitement with our thrilling water sports experiences in Zanzibar. Enjoy the perfect mix of adrenaline, fun, and breathtaking ocean views.",
+                    images: [
+                        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=2000"
+                    ],
+                    activities: [
+                        { name: "Clear Kayak Photoshoot", icon: "fa-camera", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000", desc: "Experience Zanzibar’s crystal-clear waters like never before. Glide over the turquoise ocean in a transparent kayak while capturing stunning, Instagram-worthy photos and videos. Perfect for couples, solo travelers, and content creators." },
+                        { name: "Jet Ski Adventure", icon: "fa-bolt", image: "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=2000", desc: "Feel the adrenaline as you ride across the Indian Ocean on a high-speed jet ski. Whether you’re a beginner or experienced rider, this activity offers the perfect mix of excitement, freedom, and breathtaking ocean views." },
+                        { name: "Jet Car Experience", icon: "fa-car-side", image: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=2000", desc: "Drive a luxury-style “car” on water in this one-of-a-kind experience. The Jet Car combines speed, style, and fun — giving you a unique way to explore the ocean while turning heads." }
+                    ]
+                },
+                {
+                    id: 'ocean-experiences',
+                    title: "Ocean Experiences",
+                    icon: "fa-anchor",
+                    desc: "Explore the beauty of Zanzibar’s crystal-clear waters with unforgettable ocean experiences. Every moment brings you closer to the magic of the sea.",
+                    images: [
+                        "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=2000"
+                    ],
+                    activities: [
+                        { name: "Nakupenda Sandbank", icon: "fa-umbrella-beach", image: "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=2000", desc: "Relax on a stunning white sandbank surrounded by crystal-clear waters. Enjoy sunbathing, swimming, and a fresh seafood lunch in one of Zanzibar’s most beautiful natural settings." },
+                        { name: "Safari Blue Experience", icon: "fa-sailboat", image: "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2000", desc: "A full-day ocean adventure featuring snorkeling, dhow sailing, swimming in natural lagoons, and a delicious seafood feast. One of the most popular experiences in Zanzibar." },
+                        { name: "Dolphin Tours", icon: "fa-fish-fins", image: "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=2000", desc: "Swim alongside wild dolphins in their natural habitat. This early morning experience offers a magical opportunity to connect with nature in the open ocean." },
+                        { name: "Snorkeling Trips", icon: "fa-water", image: "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=2000", desc: "Explore vibrant coral reefs and marine life beneath the surface. Perfect for beginners and experienced swimmers, revealing the hidden beauty of Zanzibar’s underwater world." },
+                        { name: "Sunset Cruise", icon: "fa-sun", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000", desc: "Sail into the golden hour on a traditional dhow boat while enjoying the breathtaking Zanzibar sunset. Ideal for couples and anyone seeking a peaceful, romantic experience." }
+                    ]
+                },
+                {
+                    id: 'nature-adventure',
+                    title: "Nature & Adventure",
+                    icon: "fa-leaf",
+                    desc: "Discover the wild side of Zanzibar through immersive nature and adventure tours. Wander through lush forests and explore hidden caves.",
+                    images: [
+                        "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1547471080-7fc2caa6f17f?q=80&w=2000"
+                    ],
+                    activities: [
+                        { name: "Jozani Forest Tour", icon: "fa-tree", image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2000", desc: "Discover Zanzibar’s only national park, home to the rare red colobus monkeys. Walk through lush forest trails and mangroves while learning about the island’s unique ecosystem." },
+                        { name: "Salaam Cave Experience", icon: "fa-dungeon", image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000", desc: "Swim in a natural cave pool with crystal-clear water surrounded by rock formations with turtles. A peaceful and refreshing experience perfect for relaxation and unique photos." }
+                    ]
+                },
+                {
+                    id: 'culture-history',
+                    title: "Culture & History",
+                    icon: "fa-landmark",
+                    desc: "Step into the heart of Zanzibar’s rich culture and history. Explore ancient streets, visit iconic landmarks, and experience the local lifestyle and traditions.",
+                    images: [
+                        "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2000"
+                    ],
+                    activities: [
+                        { name: "Stone Town Tour", icon: "fa-city", image: "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=2000", desc: "Explore the historic heart of Zanzibar, a UNESCO World Heritage Site. Walk through narrow streets, discover ancient architecture, and learn about the island’s rich culture." },
+                        { name: "Prison Island Tour", icon: "fa-bridge-water", image: "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=2000", desc: "Visit this beautiful island known for its giant tortoises and stunning ocean views. Enjoy a mix of history, nature, and relaxation in one unique location." },
+                        { name: "Spice Farm Tour", icon: "fa-pepper-hot", image: "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=2000", desc: "Experience why Zanzibar is called the “Spice Island.” See, smell, and taste fresh spices and tropical fruits while learning about their uses and cultural importance." },
+                        { name: "Local Market Experience", icon: "fa-store", image: "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2000", desc: "Immerse yourself in everyday Zanzibar life by visiting a bustling local market. Discover fresh produce, spices, and authentic interactions with local people." },
+                        { name: "The Rock Restaurant", icon: "fa-utensils", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000", desc: "Dine at Zanzibar’s most iconic restaurant, located on a rock in the ocean. Enjoy fresh seafood and breathtaking views in a truly unforgettable setting." }
+                    ]
+                },
+                {
+                    id: 'special-luxury',
+                    title: "Special & Luxury",
+                    icon: "fa-gem",
+                    desc: "Indulge in the finest Zanzibar has to offer with our exclusive luxury experiences. Enjoy comfort, elegance, and VIP treatment at every step.",
+                    images: [
+                        "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000",
+                        "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=2000"
+                    ],
+                    activities: [
+                        { name: "Flying Dress Photoshoot", icon: "fa-camera-retro", image: "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=2000", desc: "Feel like royalty as you pose in a flowing gown on Zanzibar’s stunning beaches. This experience is perfect for creating dramatic, elegant, and unforgettable photos." },
+                        { name: "Romantic & Proposal Setups", icon: "fa-heart", image: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=2000", desc: "Celebrate love with beautifully designed beach setups, perfect for proposals, anniversaries, or special moments. From candles to flowers, every detail is crafted to perfection." },
+                        { name: "Drone Photography", icon: "fa-helicopter", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000", desc: "Capture your experience from a breathtaking aerial perspective. Our professional drone services create cinematic photos and videos that you’ll treasure forever." }
+                    ]
+                }
+            ];
+
+            const renderContainer = document.getElementById("services-container");
+
+            // 1. RENDER VIEW 1 (Editorial Sticky-Scroll Moodboard)
+            servicesData.forEach((s, idx) => {
+                const isEven = idx % 2 === 0;
+                
+                // Using object-contain and framed-image-container to ensure ZERO clipping
+                const clusterHtml = s.images.map((img, i) => {
+                    // Create an asymmetrical layout for the 4 images
+                    const classes = [
+                        "col-span-2 row-span-2 h-[300px]", 
+                        "col-span-1 row-span-1 h-[140px]", 
+                        "col-span-1 row-span-1 h-[140px] mt-4", 
+                        "col-span-2 row-span-1 h-[200px]"
+                    ];
+                    return `
+                        <div class="${classes[i]} framed-image-container rounded-2xl overflow-hidden shadow-2xl border border-white/10 transition-transform duration-500 hover:scale-[1.02]">
+                            <img src="${img}" class="w-full h-full object-contain p-2" alt="${s.title}">
+                        </div>
+                    `;
+                }).join('');
+
+                const html = `
+                    <div class="max-w-[1600px] mx-auto px-6 lg:px-12 mb-32 border-b border-white/10 pb-20 animate-fade-in-up">
+                        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+                            
+                            <!-- STICKY TEXT SECTION -->
+                            <div class="w-full lg:w-5/12 lg:sticky lg:top-40">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-14 h-14 rounded-full bg-sunset/10 flex items-center justify-center text-sunset text-2xl border border-sunset/20"><i class="fa-solid ${s.icon}"></i></div>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-sunset">Collection 0${idx + 1}</span>
+                                </div>
+                                <h3 class="font-playfair text-5xl md:text-6xl font-black text-white leading-tight mb-6">${s.title}</h3>
+                                <p class="text-gray-400 font-light text-base md:text-lg leading-relaxed mb-10">${s.desc}</p>
+                                
+                                <button class="btn-open-modal w-full sm:w-auto glass-panel hover:bg-sunset text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-2xl flex items-center justify-center gap-3 cursor-pointer group" data-id="${s.id}">
+                                    View Experiences <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+
+                            <!-- SCROLLING IMAGE MOSAIC (ZERO CROPPING) -->
+                            <div class="w-full lg:w-7/12">
+                                <div class="grid grid-cols-2 gap-4">
+                                    ${clusterHtml}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+                renderContainer.insertAdjacentHTML('beforeend', html);
+            });
+
+            // 2. MODAL LOGIC (VIEW 2)
+            const modal = document.getElementById('activities-modal');
+
+            document.body.addEventListener('click', (e) => {
+                
+                // OPEN MODAL
+                const triggerBtn = e.target.closest('.btn-open-modal');
+                if (triggerBtn) {
+                    e.preventDefault();
+                    const id = triggerBtn.getAttribute('data-id');
+                    const service = servicesData.find(s => s.id === id);
+                    
+                    if (service) {
+                        // Populate Header
+                        document.getElementById('modal-service-icon').innerHTML = `<i class="fa-solid ${service.icon}"></i>`;
+                        document.getElementById('modal-service-title').innerText = service.title;
+                        document.getElementById('modal-title').innerText = service.title;
+                        document.getElementById('modal-service-desc').innerText = service.desc;
+
+                        // Populate Activities (Alternating Row Design)
+                        const list = document.getElementById('modal-activities-list');
+                        list.innerHTML = service.activities.map((act, i) => {
+                            const isEven = i % 2 === 0;
+                            return `
+                                <div class="glass-panel rounded-[2rem] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} animate-fade-in-up border border-white/10" style="animation-delay: ${i * 0.1}s">
+                                    
+                                    <!-- Image Block (Strict object-contain to prevent cutting) -->
+                                    <div class="w-full md:w-1/2 h-[300px] md:h-auto framed-image-container shrink-0">
+                                        <img src="${act.image}" class="w-full h-full object-contain p-4 transition-transform duration-700 hover:scale-105" alt="${act.name}">
+                                    </div>
+                                    
+                                    <!-- Text Block -->
+                                    <div class="w-full md:w-1/2 p-8 md:p-14 flex flex-col justify-center bg-luxury">
+                                        <div class="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center text-ocean text-xl mb-6 border border-ocean/20">
+                                            <i class="fa-solid ${act.icon}"></i>
+                                        </div>
+                                        <h4 class="font-playfair text-3xl font-bold text-white mb-4 leading-tight">${act.name}</h4>
+                                        <p class="text-gray-400 font-light text-base leading-relaxed mb-8">${act.desc}</p>
+                                        
+                                        <div class="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+                                            <span class="text-[10px] font-bold text-sunset uppercase tracking-widest">Included</span>
+                                            <a href="https://wa.me/255XXXXXXXXX" class="text-white hover:text-sunset text-sm font-bold transition-colors cursor-pointer flex items-center gap-2">
+                                                Add to Booking <i class="fa-solid fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+
+                        // Show Modal
+                        document.querySelector('.modal-scroll').scrollTop = 0;
+                        modal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Small delay to ensure CSS transition fires
+                        setTimeout(() => {
+                            modal.classList.add('flex');
+                            modal.classList.remove('opacity-0');
+                        }, 50);
+                    }
+                    return;
+                }
+
+                // CLOSE MODAL
+                const closeBtn = e.target.closest('#close-modal') || e.target.closest('#btn-go-back');
+                if (closeBtn) {
+                    e.preventDefault();
+                    modal.classList.add('opacity-0');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        document.body.style.overflow = '';
+                    }, 700);
+                    return;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

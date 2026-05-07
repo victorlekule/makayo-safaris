@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Makayo Safaris</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,800&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Flat Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+  
+    <style>
+        /* Invisible Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #003C63; border-radius: 10px; }
+        html { scroll-behavior: smooth; background-color: #f8fafc; color: #1f2937; }
+        
+        /* Premium Form Inputs */
+        .glass-input {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 60, 99, 0.1);
+            border-radius: 1rem;
+            color: #1f2937;
+            padding: 1.2rem 1.5rem;
+            transition: all 0.4s ease;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        .glass-input:focus {
+            outline: none;
+            border-color: #F27D57;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 25px rgba(242, 125, 87, 0.1);
+        }
+        .glass-input::placeholder { color: #9ca3af; font-weight: 300; }
+        
+        /* Two-Way Scroll Reveal Classes */
+        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right { opacity: 0; transform: translateX(-40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left { opacity: 0; transform: translateX(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        .is-visible { opacity: 1; transform: translate(0, 0); }
+    </style>
+</head>
+<body class="font-poppins overflow-x-hidden pt-[100px] md:pt-[120px] antialiased select-text">
+
+<div id="header-container" class="absolute w-full z-50 top-0 left-0"></div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <main class="w-full">
+        
+        <!-- ========================================== -->
+        <!-- 1. THE HERO SECTION (Heading & Paragraph)  -->
+        <!-- ========================================== -->
+        <section class="relative w-full h-[60vh] md:h-[70vh] bg-forest flex flex-col items-center justify-center overflow-hidden">
+            <!-- Background Image with Object-Contain framing -->
+            <div class="absolute inset-0 z-0 bg-forest flex items-center justify-center p-4">
+                <img src="picha/3.jpg" class="w-full h-full object-contain opacity-30 mix-blend-luminosity filter contrast-125" alt="Safari Landscape">
+                <div class="absolute inset-0 bg-gradient-to-b from-forest via-yellow-400 to-forest z-10 pointer-events-none"></div>
+            </div>
+
+            <div class="relative z-20 text-center px-6 w-full max-w-[1000px] mx-auto reveal-up">
+                <span class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-sunset/30 bg-sunset/10 text-sunset font-bold tracking-widest uppercase text-[10px] md:text-xs mb-6 shadow-2xl backdrop-blur-md">
+                    <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                </span>
+                <h1 class="font-playfair text-5xl sm:text-7xl md:text-8xl font-black text-white leading-tight tracking-tight drop-shadow-2xl mb-2">
+                    Begin Your <br><span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">Journey.</span>
+                </h1>
+                <p class="text-white font-light text-base md:text-xl leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                    Whether you are ready to book your ultimate Tanzanian adventure or just have a few questions, our dedicated team is here to assist you every step of the way.
+                </p>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. THE FORM SECTION (Asymmetrical Overlap) -->
+        <!-- ========================================== -->
+        <section class="relative w-full pb-32 pt-24 bg-white">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-30 -mt-24 md:-mt-32">
+                
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-8 items-start">
+                    
+                    <!-- LEFT SIDE: Information Cards (Staggered Asymmetrically) -->
+                    <div class="w-full lg:w-5/12 flex flex-col gap-8 ">
+                        
+                        <!-- Card 1: Instant Booking -->
+                        <div class="bg-ocean p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col gap-4 group hover:-translate-y-2 transition-transform duration-500 ml-0 lg:ml-0 reveal-right">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-navy text-lg group-hover:bg-sunset group-hover:text-white transition-colors border border-navy/10">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <h4 class="font-playfair text-2xl font-bold text-white">Instant Booking</h4>
+                            </div>
+                            <p class="text-white font-light text-sm leading-relaxed">Fast-track your adventure by reaching out directly to our booking team.</p>
+                            <div class="flex flex-col gap-4 mt-2">
+                                <a href="https://wa.me/255XXXXXXXXX" class="text-white hover:text-yellow-400 font-bold text-sm transition-colors flex items-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-white text-xl"></i> +255 000 000 000
+                                </a>
+                                <a href="mailto:booking@makayosafaris.com" class="text-white hover:text-yellow-400 font-bold text-sm transition-colors flex items-center gap-3">
+                                    <i class="fa-solid fa-envelope text-white text-xl"></i> booking@makayosafaris.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Location (Arusha) -->
+                        <div class="bg-ocean p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col gap-4 group hover:-translate-y-2 transition-transform duration-500 ml-0 lg:ml-10 reveal-right" style="transition-delay: 100ms;">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-black text-lg group-hover:bg-sunset group-hover:text-white transition-colors border border-navy/10">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <h4 class="font-playfair text-2xl font-bold text-white">Our Location</h4>
+                            </div>
+                            <p class="text-white font-light text-sm leading-relaxed">
+                                Makayo Safaris Headquarters<br>
+                                Tourism Hub, Arusha<br>
+                                Tanzania, East Africa
+                            </p>
+                        </div>
+
+                        <!-- Card 3: Working Hours -->
+                        <div class="bg-ocean p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col gap-4 group hover:-translate-y-2 transition-transform duration-500 ml-0 lg:ml-20 reveal-right" style="transition-delay: 200ms;">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-black text-lg group-hover:bg-sunset group-hover:text-white transition-colors border border-navy/10">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                                <h4 class="font-playfair text-2xl font-bold text-white">Working Hours</h4>
+                            </div>
+                            <ul class="text-white font-light text-sm leading-relaxed space-y-3 mt-2">
+                                <li class="flex justify-between border-b border-gray-100 pb-2">
+                                    <span>Monday - Friday:</span> <span class="font-medium text-yellow-400">08:00 AM - 06:00 PM</span>
+                                </li>
+                                <li class="flex justify-between border-b border-gray-100 pb-2">
+                                    <span>Saturday:</span> <span class="font-medium text-yellow-400">09:00 AM - 04:00 PM</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Sunday:</span> <span class="font-medium text-yellow-400">Closed (Online Support)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT SIDE: The Glassmorphic Contact Form -->
+                    <div class="w-full lg:w-7/12 reveal-left">
+                        <div class="bg-white/80 backdrop-blur-3xl p-10 md:p-16 rounded-[3rem] shadow-[0_30px_60px_rgba(0,60,99,0.08)] border border-white relative overflow-hidden">
+                            
+                            <!-- Ambient Glow Effect -->
+                            <div class="absolute -top-32 -right-32 w-96 h-96 bg-sunset/10 rounded-full blur-[80px] pointer-events-none transition-colors duration-1000"></div>
+                            
+                            <h3 class="font-playfair text-3xl md:text-4xl font-black text-ocean mb-10 relative z-10">Send an Inquiry</h3>
+                            
+                            <form action="#" method="POST" class="flex flex-col gap-6 relative z-10">
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="flex flex-col">
+                                        <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">First Name</label>
+                                        <input type="text" placeholder="Your first name" class="glass-input" required>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">Last Name</label>
+                                        <input type="text" placeholder="Your last name" class="glass-input" required>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="flex flex-col">
+                                        <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">Email Address</label>
+                                        <input type="email" placeholder="john@example.com" class="glass-input" required>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">Phone Number</label>
+                                        <input type="tel" placeholder="+1 234 567 8900" class="glass-input">
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">Subject of Interest</label>
+                                    <div class="relative">
+                                        <select class="glass-input appearance-none cursor-pointer">
+                                            <option value="" disabled selected>Select an option...</option>
+                                            <option value="zanzibar">Zanzibar Tours</option>
+                                            <option value="kilimanjaro">Kilimanjaro Trekking</option>
+                                            <option value="safari">Mainland Safari</option>
+                                            <option value="custom">Custom / General Inquiry</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-6 flex items-center pointer-events-none text-navy">
+                                            <i class="fa-solid fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest text-ocean mb-2 ml-4">Your Message</label>
+                                    <textarea rows="5" placeholder="Tell us about your dream trip..." class="glass-input resize-none" required></textarea>
+                                </div>
+
+                                <div class="mt-6 flex flex-col sm:flex-row items-center gap-6">
+                                    <button type="submit" class="w-full sm:w-auto bg-ocean hover:bg-forest text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(0,60,99,0.2)] hover:shadow-[0_15px_30px_rgba(242,125,87,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3">
+                                        Submit Request <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. THE MAP SECTION (Arusha Location)       -->
+        <!-- ========================================== -->
+        <!-- Map displays beautifully with slight desaturation to fit the premium look without being hidden -->
+        <section class="w-full relative bg-surface h-[500px] md:h-[600px] border-t border-gray-200 reveal-up">
+            
+            <!-- Floating Map Badge -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 z-20 bg-white/95 backdrop-blur-md px-8 py-4 rounded-full shadow-2xl border border-gray-100 flex items-center gap-4">
+                <i class="fa-solid fa-earth-africa text-sunset text-xl"></i>
+                <span class="font-playfair font-bold text-navy text-lg tracking-wide uppercase">Find Us in Arusha</span>
+            </div>
+
+            <!-- Clear, visible Google Maps Embed -->
+            <div class="w-full h-full filter grayscale-[30%] contrast-[105%] pointer-events-auto">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127504.42598379668!2d36.6826!3d-3.3731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18371c88f23ef73d%3A0x5b17da2ceba8e986!2sArusha%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1715082000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Two-Way Scroll Reveal Engine (Up and Down animations)
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Resets animation so it plays again when scrolling back
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            // Apply observer to all reveal classes
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            revealElements.forEach(el => revealObserver.observe(el));
+            
+            // Force trigger immediately for elements already in the viewport on load
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        el.classList.add('is-visible');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+
+    <script src="animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

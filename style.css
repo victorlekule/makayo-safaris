@@ -1,0 +1,15 @@
+
+    /* Base Animation States */
+    .fade-up { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-left { opacity: 0; transform: translateX(-60px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-right { opacity: 0; transform: translateX(60px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .zoom-in { opacity: 0; transform: scale(0.95); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    
+    /* Active State applied by JS */
+    .fade-up.active, .fade-left.active, .fade-right.active, .zoom-in.active { opacity: 1; transform: translate(0) scale(1); }
+    
+    /* Staggered Delays for grids */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    
