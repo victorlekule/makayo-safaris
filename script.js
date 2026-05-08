@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <a href="tanzania.html" class="text-black hover:text-ocean transition-colors pb-1">Tanzania Safaris</a>
                             <a href="trecking.html" class="text-black hover:text-ocean transition-colors pb-1">Mountain Treking</a>
                             <a href="zanzibar.html" class="text-black hover:text-ocean transition-colors pb-1">Zanzibar Experiences</a>
-                            <a href="gallery,html" class="text-black hover:text-ocean transition-colors pb-1">Gallery</a>
+                            <a href="gallery.html" class="text-black hover:text-ocean transition-colors pb-1">Gallery</a>
                             <a href="blog.html" class="text-black hover:text-ocean transition-colors pb-1">Blog</a>
                             <a href="contact.html" class="text-black hover:text-ocean transition-colors pb-1">Contact Us</a>
                         </div>
