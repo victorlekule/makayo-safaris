@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Makayo Safaris</title>
+
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body { background-color: #F8FAFC; }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 800px; /* enough for longest answer */
+            padding: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="font-body text-slate-800 cusor-default">
+
+  <div id="header-container" class="absolute w-full z-50 top-0 left-0"></div>
+
+    <!-- Hero Section -->
+    <section class="bg-ocean text-white py-20 md:py-28 relative overflow-hidden mt-24">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(242,125,87,0.3)_0%,_transparent_70%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-block bg-white/10 backdrop-blur border border-white/20 px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-sunset mb-6">
+                We've got answers
+            </span>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-black mb-6">Frequently Asked Questions</h1>
+            <p class="text-white/70 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                Everything you need to know about your Makayo safari, trek, or Zanzibar escape – all in one place.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Sections -->
+    <section class="py-16 md:py-24 px-6">
+        <div class="max-w-4xl mx-auto space-y-12">
+
+            <!-- GENERAL QUESTIONS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-sunset/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </span>
+                    General Questions
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What is Makayo Safaris?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Makayo Safaris is a premier East African travel company based in Tanzania, specializing in tailor‑made safaris, Mount Kilimanjaro treks, and Zanzibar island experiences. We create personalized itineraries that combine adventure, luxury, and cultural immersion, ensuring every trip is safe, unforgettable, and responsibly operated.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Why should I choose Makayo?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Local expertise</strong>: Our guides are born and raised in Tanzania, with deep knowledge of wildlife, culture, and terrain.</li>
+                                <li><strong>Fully customizable</strong>: Every trip is designed around your interests, budget, and travel style.</li>
+                                <li><strong>Safety first</strong>: 24/7 support, well‑maintained vehicles, and certified guides.</li>
+                                <li><strong>Responsible travel</strong>: We support local communities and conservation projects.</li>
+                                <li><strong>Transparent pricing</strong>: No hidden costs – what we quote is what you pay.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Is Tanzania safe for tourists?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Yes, Tanzania is one of the safest countries in Africa for travelers. Our tours always follow recommended routes, and we provide 24/7 assistance. Like anywhere, we advise using common sense – keep valuables secure and follow your guide’s advice. All our accommodations are carefully selected for safety and comfort.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAFARI QUESTIONS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-paw"></i>
+                    </span>
+                    Safari Questions
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q4 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>When is the best time for a safari in Tanzania?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>The dry season (June to October) is ideal for wildlife viewing as animals gather around water sources. The wildebeest migration in the Serengeti typically crosses the Mara River between July and September. The green season (November to May) offers lush landscapes, fewer crowds, and excellent birdwatching – plus the calving season in Ndutu (January to February) is spectacular for predator action.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What animals can I expect to see?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Tanzania’s parks are home to the “Big Five” (lion, leopard, elephant, buffalo, rhino), plus cheetahs, giraffes, zebras, wildebeest, hippos, crocodiles, and hundreds of bird species. Each park offers something unique – Serengeti for the great migration, Ngorongoro for dense wildlife in a crater, Tarangire for large elephant herds, and Lake Manyara for tree‑climbing lions and flamingos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What should I pack for a safari?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Clothing</strong>: Neutral colors (khaki, olive, brown), lightweight long sleeves for sun protection, a warm fleece for early morning drives, and a waterproof jacket.</li>
+                                <li><strong>Footwear</strong>: Comfortable closed shoes or hiking boots.</li>
+                                <li><strong>Accessories</strong>: Wide‑brimmed hat, sunglasses, sunscreen (SPF 30+), insect repellent, binoculars, and a good camera with extra batteries.</li>
+                                <li><strong>Health</strong>: Personal medications, malaria prophylaxis (consult your doctor), and a basic first‑aid kit.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Are safaris suitable for children?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Absolutely! Many of our family‑friendly itineraries are designed with shorter game drives and kid‑friendly lodges. We recommend a minimum age of 5 for most safaris; some camps have age restrictions for walking safaris. We’ll help you choose the perfect route for your family.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TREKKING QUESTIONS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-mountain"></i>
+                    </span>
+                    Trekking & Kilimanjaro
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q8 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Do I need experience to climb Kilimanjaro?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>No technical climbing experience is needed. Kilimanjaro is a trekking peak, meaning anyone with good physical fitness and determination can reach the summit. We recommend training 2‑3 months beforehand – focus on cardiovascular endurance (hiking, running, cycling) and leg strength. Our guides set a slow, steady pace (“pole pole”) to maximize acclimatization and success.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Which Kilimanjaro route is best?</span>
+                            <i class="fa-solid fa-plus faq-icon text-sunset transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>We recommend the <strong>8‑day Lemosho</strong> or <strong>7‑day Machame</strong> routes for the highest summit success rates (over 90%). These routes allow proper acclimatization and offer stunning scenery. Marangu is the only route with hut accommodation but has a lower success rate. We’ll help you choose based on your fitness level, time, and preferences.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What gear is provided for the trek?</span>
+                            <i class="fa-solid fa-plus faq-icon text-sunset transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>We provide high‑quality 4‑season tents, comfortable sleeping mats, dining tents with tables/chairs, and all cooking equipment. You need to bring your own sleeping bag (or rent from us), personal clothing, hiking boots, and a daypack. A detailed packing list is sent after booking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZANZIBAR QUESTIONS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </span>
+                    Zanzibar Experiences
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q11 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What are the must‑do activities in Zanzibar?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Stone Town</strong>: UNESCO World Heritage walk through history, spice markets, and Freddie Mercury’s birthplace.</li>
+                                <li><strong>Prison Island</strong>: Giant tortoises and snorkeling in crystal‑clear waters.</li>
+                                <li><strong>Nakupenda Sandbank</strong>: A day on a pristine sandbank with fresh seafood.</li>
+                                <li><strong>Spice Farm Tour</strong>: See, smell, and taste the spices that gave Zanzibar its nickname.</li>
+                                <li><strong>Sunset dhow cruise</strong>: Sail into the golden hour aboard a traditional wooden boat.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-ocean transition-colors">
+                            <span>What is the best time to visit Zanzibar?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Zanzibar is a year‑round destination. The dry seasons (June – October and December – February) offer sunny, beach‑perfect weather. The long rains (March – May) bring fewer crowds and lush greenery – great for cultural tours and lower rates. The short rains (November) are usually brief afternoon showers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q13 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-ocean transition-colors">
+                            <span>What should I wear in Zanzibar?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Zanzibar is predominantly Muslim, so modest dress is appreciated in Stone Town and local villages. For the beach, swimwear is fine, but cover up with a kanga or light clothing when away from the sand. Women should carry a scarf to cover shoulders when entering mosques or conservative areas. Lightweight, breathable fabrics are best.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOKING & PAYMENTS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </span>
+                    Booking, Payments & Policies
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q14 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>How do I book a trip with Makayo?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Simply contact us via WhatsApp, email, or our website contact form. Tell us your travel dates, interests, and budget. We’ll create a personalized itinerary within 24 hours. Once you approve, a 30% deposit secures your booking, with the balance due 30 days before departure. Last‑minute bookings (within 14 days) may require full payment upfront.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q15 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What payment methods do you accept?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>We accept bank transfers (USD, EUR, GBP), credit card payments via secure online link (Visa, Mastercard), and mobile money (M‑Pesa) for Kenyan/Tanzanian residents. All payments are invoiced officially, and you receive a receipt for every transaction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q16 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What is your cancellation policy?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Cancellations more than 60 days before arrival: full refund minus $100 admin fee.</li>
+                                <li>30‑60 days: 50% refund.</li>
+                                <li>Less than 30 days: no refund, but we can postpone your trip (subject to availability).</li>
+                                <li>We highly recommend purchasing travel insurance to cover unexpected cancellations.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q17 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Do I need a visa for Tanzania?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Most visitors require a tourist visa. You can obtain an eVisa online before travel (recommended) or get a visa on arrival at Kilimanjaro International Airport, Dar es Salaam, or Zanzibar. Cost is $50 for most nationalities ($100 for US citizens). Your passport must be valid for at least 6 months beyond your travel dates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAVEL TIPS -->
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-ocean mb-8 flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center text-ocean text-xl">
+                        <i class="fa-solid fa-suitcase"></i>
+                    </span>
+                    Travel Tips & Practical Info
+                </h2>
+                <div class="space-y-4">
+                    <!-- Q18 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>Do I need vaccinations or malaria prophylaxis?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Yellow fever vaccination is required only if arriving from a yellow‑fever endemic country. Routine vaccines (Hepatitis A, Typhoid, Tetanus) are recommended. Malaria is present in many areas; we advise taking prophylactic medication (consult your travel doctor) and using insect repellent. All our lodges provide mosquito nets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q19 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What currency is used, and can I use cards?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>The official currency is the Tanzanian Shilling (TZS). US dollars are widely accepted (notes must be series 2009 or newer). Credit cards are accepted at larger hotels and some tour operators, but small shops and markets are cash‑only. ATMs are available in Arusha, Moshi, and Stone Town.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q20 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-ocean hover:text-forest transition-colors">
+                            <span>What language is spoken, and will I need a translator?</span>
+                            <i class="fa-solid fa-plus faq-icon text-ocean transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer text-black leading-relaxed">
+                            <p>Swahili and English are the national languages of Tanzania. All our guides speak fluent English, and staff at hotels and restaurants are also English‑speaking. Learning a few Swahili words (“Jambo!” for hello, “Asante” for thank you) is appreciated but not necessary.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-forest text-white text-center mb-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <h3 class="font-display text-3xl md:text-5xl font-black mb-6">Still have questions?</h3>
+            <p class="text-white text-lg mb-8">Our team is ready to help you plan every detail of your dream African adventure.</p>
+            <a href="https://wa.me/255XXXXXXXXX" class="inline-flex items-center gap-3 bg-ocean hover:bg-yellow-400 hover:text-black text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transition-all">
+                <i class="fa-brands fa-whatsapp text-2xl"></i> Chat with Us
+            </a>
+        </div>
+    </section>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const button = item.querySelector('button');
+            button.addEventListener('click', () => {
+                // Close other open items
+                document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                    if (activeItem !== item) activeItem.classList.remove('active');
+                });
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+    <div id="makayo-footer"></div>
+    <script src="animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

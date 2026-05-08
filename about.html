@@ -15,11 +15,12 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-poppins text-slate-800 antialiased overflow-x-hidden cursor-default">
+
 
     <div id="header-container" class="absolute w-full z-50 top-0 left-0"></div>
 
-    <main class="w-full overflow-hidden bg-white">
+    <main class="w-full overflow-hidden bg-white cursor-default">
         
         <!-- 1. HERO SECTION -->
         <section class="relative h-[70vh] min-h-[500px] w-full flex items-center justify-center overflow-hidden bg-black">
@@ -38,229 +39,641 @@
             </div>
         </section>
 
-        <!-- 2. ABOUT MAKAYO (Asymmetrical Overlap) -->
-        <section class="relative py-32 bg-white overflow-hidden">
-            <!-- Massive Watermark Typography -->
-            <div class="absolute top-10 right-0 w-full text-right pointer-events-none z-0 pr-10 overflow-hidden">
-                <h2 class="text-[10rem] md:text-[16rem] font-playfair font-black text-gray-50 leading-none tracking-tighter select-none">ORIGINS</h2>
+<!-- 2. ABOUT MAKAYO (Asymmetrical Overlap) – Mobile Optimized -->
+<section class="relative py-16 md:py-32 bg-white overflow-hidden">
+    <!-- Massive Watermark Typography: already handles overflow, height reduced on mobile -->
+    <div class="absolute top-10 right-0 w-full text-right pointer-events-none z-0 pr-4 md:pr-10 overflow-hidden">
+        <h2 class="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[16rem] font-playfair font-black text-gray-50 leading-none tracking-tighter select-none">ORIGINS</h2>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            
+            <!-- Text Content (unchanged) -->
+            <div class="fade-right">
+                <div class="w-16 md:w-20 h-1.5 bg-gradient-to-r from-ocean to-forest mb-8 md:mb-10 rounded-full"></div>
+                <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6 md:mb-8 leading-tight">
+                    Born from the <br><span class="italic text-ocean">African Dust</span>
+                </h2>
+                
+                <p class="text-gray-600 mb-6 text-base md:text-lg leading-relaxed font-light text-justify">
+                    Makayo Safaris wasn't created in a boardroom; it was forged around campfires under the vast Tanzanian sky. What started as a singular passion for the untamed wilderness has evolved into a premier luxury travel atelier.
+                </p>
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed font-light mb-8 md:mb-10 text-justify">
+                    We are local experts, conservationists, and storytellers. For over 15 years, we have guided discerning travelers through the Great Migration, to the summit of Kilimanjaro, and across the azure waters of Zanzibar.
+                </p>
+                
+                <div class="font-playfair text-2xl md:text-3xl text-black font-bold italic">Makayo Team</div>
             </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                    
-                    <!-- Text Content -->
-                    <div class="fade-right">
-                        <div class="w-20 h-1.5 bg-gradient-to-r from-ocean to-forest mb-10 rounded-full"></div>
-                        <h2 class="font-playfair text-5xl md:text-6xl font-bold text-black mb-8 leading-tight">Born from the <br><span class="italic text-ocean">African Dust</span></h2>
-                        <p class="text-gray-600 mb-6 text-lg leading-relaxed font-light">
-                            Makayo Safaris wasn't created in a boardroom; it was forged around campfires under the vast Tanzanian sky. What started as a singular passion for the untamed wilderness has evolved into a premier luxury travel atelier.
-                        </p>
-                        <p class="text-gray-600 text-lg leading-relaxed font-light mb-10">
-                            We are local experts, conservationists, and storytellers. For over 15 years, we have guided discerning travelers through the Great Migration, to the summit of Kilimanjaro, and across the azure waters of Zanzibar.
-                        </p>
-                        <!-- Signature -->
-                        <div class="font-playfair text-3xl text-black font-bold italic">Makayo Team</div>
-                    </div>
-
-                    <!-- Asymmetrical Image Composition -->
-                    <div class="relative h-[700px] w-full fade-left">
-                        <!-- Main Image -->
-                        <img src="picha/1.jpg" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-[3rem] shadow-2xl z-10" alt="Serengeti Plains">
-                        <!-- Overlapping Image with Glass Border -->
-                        <div class="absolute bottom-0 left-0 w-3/5 h-[400px] rounded-[3rem] p-3 bg-white/40 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-20 zoom-in delay-200">
-                            <img src="picha/3.jpg" class="w-full h-full object-cover rounded-[2.2rem]" alt="Safari Guide">
-                        </div>
-                    </div>
+            <!-- Asymmetrical Image Composition: Compact on mobile, expands on larger screens -->
+            <div class="relative h-[350px] sm:h-[450px] md:h-[650px] w-full fade-left mt-8 lg:mt-0">
+                <!-- Main Image -->
+                <img src="picha/1.jpg" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-[2rem] md:rounded-[3rem] shadow-2xl z-10" alt="Serengeti Plains">
+                
+                <!-- Overlapping Image with Glass Border -->
+                <div class="absolute bottom-0 left-0 w-3/5 h-[180px] sm:h-[250px] md:h-[350px] rounded-[2rem] md:rounded-[3rem] p-2 md:p-3 bg-white/40 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-20 zoom-in delay-200">
+                    <img src="picha/3.jpg" class="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2.2rem]" alt="Safari Guide">
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- 3. MISSION & VISION (Split Glassmorphism) -->
-        <section class="py-32 bg-gray-50 relative overflow-hidden border-y border-gray-200">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ocean/5 rounded-full blur-[150px] pointer-events-none"></div>
+<!-- 3. MISSION & VISION (Carousel on Mobile, Two‑Col on Desktop) -->
+<!-- 3. MISSION & VISION (Mobile Carousel with Padding + Swipe) -->
+<section class="py-16 md:py-32 bg-gray-50 relative overflow-hidden border-y border-gray-200">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ocean/5 rounded-full blur-[150px] pointer-events-none"></div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    
-                    <!-- Mission Card -->
-                    <div class="bg-white rounded-[3rem] p-12 md:p-16 shadow-[0_20px_50px_rgba(0,105,148,0.08)] fade-up border border-gray-100 group hover:border-ocean/30 transition-colors duration-500">
-                        <div class="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mb-8">
-                            <svg class="w-8 h-8 text-ocean" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Desktop Layout (unchanged) -->
+        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Mission Card -->
+            <div class="bg-white rounded-[3rem] p-12 md:p-16 shadow-[0_20px_50px_rgba(0,105,148,0.08)] fade-up border border-gray-100 group hover:border-ocean/30 transition-colors duration-500">
+                <div class="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mb-8">
+                    <svg class="w-8 h-8 text-ocean" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="font-playfair text-4xl font-bold text-black mb-6">Our Mission</h3>
+                <p class="text-gray-600 text-lg font-light leading-relaxed">
+                    To deliver transformative, tailor-made African experiences that deeply connect our guests to the wildlife, landscapes, and cultures of Tanzania, while fiercely protecting the ecosystems we operate within.
+                </p>
+            </div>
+            <!-- Vision Card -->
+            <div class="bg-white rounded-[3rem] p-12 md:p-16 shadow-[0_20px_50px_rgba(34,139,34,0.08)] fade-up delay-200 border border-gray-100 group hover:border-forest/30 transition-colors duration-500">
+                <div class="w-16 h-16 rounded-full bg-forest/10 flex items-center justify-center mb-8">
+                    <svg class="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <h3 class="font-playfair text-4xl font-bold text-black mb-6">Our Vision</h3>
+                <p class="text-gray-600 text-lg font-light leading-relaxed">
+                    To be the undisputed pinnacle of luxury and sustainable travel in East Africa, setting the global standard for how premium tourism can uplift local communities and preserve the natural world for generations to come.
+                </p>
+            </div>
+        </div>
+
+        <!-- Mobile Carousel (visible only on mobile) -->
+        <div class="md:hidden relative">
+            <!-- Carousel track with side padding applied to first & last card for breathing room -->
+            <div id="mv-carousel" class="flex transition-transform duration-500 ease-out">
+                <!-- Card 1: Mission (left padding via pl-4 on wrapper, right gap via pr-3) -->
+                <div class="w-full flex-shrink-0 pl-4 pr-3">
+                    <div class="bg-white rounded-[2rem] p-6 shadow-lg border border-gray-100 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center">
+                                <svg class="w-7 h-7 text-ocean" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="font-playfair text-3xl font-bold text-black">Our Mission</h3>
                         </div>
-                        <h3 class="font-playfair text-4xl font-bold text-black mb-6">Our Mission</h3>
-                        <p class="text-gray-600 text-lg font-light leading-relaxed">
+                        <p class="text-gray-600 text-base font-light leading-relaxed">
                             To deliver transformative, tailor-made African experiences that deeply connect our guests to the wildlife, landscapes, and cultures of Tanzania, while fiercely protecting the ecosystems we operate within.
                         </p>
                     </div>
-
-                    <!-- Vision Card -->
-                    <div class="bg-white rounded-[3rem] p-12 md:p-16 shadow-[0_20px_50px_rgba(34,139,34,0.08)] fade-up delay-200 border border-gray-100 group hover:border-forest/30 transition-colors duration-500">
-                        <div class="w-16 h-16 rounded-full bg-forest/10 flex items-center justify-center mb-8">
-                            <svg class="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <!-- Card 2: Vision (left gap pr-3, right padding pr-4) -->
+                <div class="w-full flex-shrink-0 pr-3">
+                    <div class="bg-white rounded-[2rem] p-6 shadow-lg border border-gray-100 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-forest/10 flex items-center justify-center">
+                                <svg class="w-7 h-7 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                            <h3 class="font-playfair text-3xl font-bold text-black">Our Vision</h3>
                         </div>
-                        <h3 class="font-playfair text-4xl font-bold text-black mb-6">Our Vision</h3>
-                        <p class="text-gray-600 text-lg font-light leading-relaxed">
+                        <p class="text-gray-600 text-base font-light leading-relaxed">
                             To be the undisputed pinnacle of luxury and sustainable travel in East Africa, setting the global standard for how premium tourism can uplift local communities and preserve the natural world for generations to come.
                         </p>
                     </div>
-
                 </div>
             </div>
-        </section>
 
-        <!-- 4. CORE VALUES (Deep Black Neon Grid) -->
-        <section class="py-32 bg-ocean text-white relative overflow-hidden">
-            <!-- Background Glows -->
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-ocean/20 rounded-full blur-[150px] pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-forest/20 rounded-full blur-[150px] pointer-events-none"></div>
+            <!-- Dots navigation -->
+            <div class="flex justify-center gap-3 mt-6">
+                <button class="w-3 h-3 rounded-full bg-ocean transition-colors" data-index="0" aria-label="Slide 1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 transition-colors" data-index="1" aria-label="Slide 2"></button>
+            </div>
+        </div>
+    </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-20 fade-up">
-                    <span class="text-transparent bg-clip-text bg-yellow-400 font-bold tracking-widest uppercase text-sm block mb-3">Our Compass</span>
-                    <h2 class="font-playfair text-6xl md:text-7xl font-bold text-white">Core Values</h2>
+    <!-- Touch/swipe & dot logic for mobile carousel -->
+    <script>
+        (function() {
+            const carousel = document.getElementById('mv-carousel');
+            if (!carousel) return;
+            const cards = carousel.querySelectorAll('.w-full');
+            const dots = document.querySelectorAll('#mv-carousel + div button');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+
+            function updateCarousel(index) {
+                const offset = -index * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-ocean', i === index);
+                    dot.classList.toggle('bg-gray-300', i !== index);
+                });
+                currentIndex = index;
+            }
+
+            // Swipe detection
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 30) {
+                    if (diff > 0 && currentIndex < cards.length - 1) {
+                        updateCarousel(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+                isDragging = false;
+            });
+
+            // Dot clicks
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'), 10);
+                    updateCarousel(index);
+                });
+            });
+        })();
+    </script>
+</section>
+
+<!-- 4. CORE VALUES (Auto‑playing Mobile Carousel + Desktop Grid) -->
+<section class="py-32 bg-ocean text-white relative overflow-hidden">
+    <!-- Background Glows -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-ocean/20 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-forest/20 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-20 fade-up">
+            <span class="text-transparent bg-clip-text bg-yellow-400 font-bold tracking-widest uppercase text-sm block mb-3">Our Compass</span>
+            <h2 class="font-playfair text-6xl md:text-7xl font-bold text-white">Core Values</h2>
+        </div>
+
+        <!-- Desktop Grid (hidden on mobile) -->
+        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- (Desktop cards unchanged) -->
+            <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-ocean transition-all duration-500 fade-up group">
+                <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">01</div>
+                <h4 class="text-2xl font-bold text-ocean mb-4">Authenticity</h4>
+                <p class="text-ocean font-light text-sm leading-relaxed">We provide genuine cultural interactions and unscripted wildlife encounters, avoiding the commercialized tourist traps.</p>
+            </div>
+            <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-forest transition-all duration-500 fade-up delay-100 group">
+                <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">02</div>
+                <h4 class="text-2xl font-bold text-ocean mb-4">Conservation</h4>
+                <p class="text-ocean font-light text-sm leading-relaxed">Protecting the habitats we visit is non-negotiable. A portion of every safari funds local anti-poaching and ecology efforts.</p>
+            </div>
+            <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-ocean transition-all duration-500 fade-up delay-200 group">
+                <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">03</div>
+                <h4 class="text-2xl font-bold text-ocean mb-4">Excellence</h4>
+                <p class="text-ocean font-light text-sm leading-relaxed">From the thread count of your tent's linens to the mechanical perfection of our 4x4s, we obsess over every luxury detail.</p>
+            </div>
+            <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-forest transition-all duration-500 fade-up delay-300 group">
+                <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">04</div>
+                <h4 class="text-2xl font-bold text-ocean mb-4">Community</h4>
+                <p class="text-ocean font-light text-sm leading-relaxed">We hire locally, train rigorously, and ensure the economic benefits of tourism directly uplift Tanzanian families.</p>
+            </div>
+        </div>
+
+        <!-- Mobile Carousel (visible only on mobile) -->
+        <div class="md:hidden relative px-4"> <!-- outer padding for space around cards -->
+            <div id="values-carousel" class="flex transition-transform duration-500 ease-out">
+                <!-- Cards now have right margin to create gap -->
+                <div class="w-full flex-shrink-0 pr-3">
+                    <div class="bg-white text-ocean rounded-[2rem] p-6 shadow-lg border border-white/10 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-4xl font-playfair font-black text-black/30">01</span>
+                            <h4 class="text-2xl font-bold">Authenticity</h4>
+                        </div>
+                        <p class="text-ocean/80 font-light text-sm leading-relaxed">We provide genuine cultural interactions and unscripted wildlife encounters, avoiding the commercialized tourist traps.</p>
+                    </div>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
-                    <!-- Value 1 -->
-                    <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-ocean transition-all duration-500 fade-up group">
-                        <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">01</div>
-                        <h4 class="text-2xl font-bold text-ocean mb-4">Authenticity</h4>
-                        <p class="text-ocean font-light text-sm leading-relaxed">We provide genuine cultural interactions and unscripted wildlife encounters, avoiding the commercialized tourist traps.</p>
+                <div class="w-full flex-shrink-0 pr-3">
+                    <div class="bg-white text-ocean rounded-[2rem] p-6 shadow-lg border border-white/10 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-4xl font-playfair font-black text-black/30">02</span>
+                            <h4 class="text-2xl font-bold">Conservation</h4>
+                        </div>
+                        <p class="text-ocean/80 font-light text-sm leading-relaxed">Protecting the habitats we visit is non-negotiable. A portion of every safari funds local anti-poaching and ecology efforts.</p>
                     </div>
-
-                    <!-- Value 2 -->
-                    <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-forest transition-all duration-500 fade-up delay-100 group">
-                        <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">02</div>
-                        <h4 class="text-2xl font-bold text-ocean mb-4">Conservation</h4>
-                        <p class="text-ocean font-light text-sm leading-relaxed">Protecting the habitats we visit is non-negotiable. A portion of every safari funds local anti-poaching and ecology efforts.</p>
+                </div>
+                <div class="w-full flex-shrink-0 pr-3">
+                    <div class="bg-white text-ocean rounded-[2rem] p-6 shadow-lg border border-white/10 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-4xl font-playfair font-black text-black/30">03</span>
+                            <h4 class="text-2xl font-bold">Excellence</h4>
+                        </div>
+                        <p class="text-ocean/80 font-light text-sm leading-relaxed">From the thread count of your tent's linens to the mechanical perfection of our 4x4s, we obsess over every luxury detail.</p>
                     </div>
-
-                    <!-- Value 3 -->
-                    <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-ocean transition-all duration-500 fade-up delay-200 group">
-                        <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">03</div>
-                        <h4 class="text-2xl font-bold text-ocean mb-4">Excellence</h4>
-                        <p class="text-ocean font-light text-sm leading-relaxed">From the thread count of your tent's linens to the mechanical perfection of our 4x4s, we obsess over every luxury detail.</p>
+                </div>
+                <div class="w-full flex-shrink-0">
+                    <div class="bg-white text-ocean rounded-[2rem] p-6 shadow-lg border border-white/10 h-full">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-4xl font-playfair font-black text-black/30">04</span>
+                            <h4 class="text-2xl font-bold">Community</h4>
+                        </div>
+                        <p class="text-ocean/80 font-light text-sm leading-relaxed">We hire locally, train rigorously, and ensure the economic benefits of tourism directly uplift Tanzanian families.</p>
                     </div>
-
-                    <!-- Value 4 -->
-                    <div class="bg-white backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] hover:-translate-y-3 hover:border-forest transition-all duration-500 fade-up delay-300 group">
-                        <div class="text-black mb-6 text-4xl font-playfair font-black opacity-50 group-hover:opacity-100 transition-opacity">04</div>
-                        <h4 class="text-2xl font-bold text-ocean mb-4">Community</h4>
-                        <p class="text-ocean font-light text-sm leading-relaxed">We hire locally, train rigorously, and ensure the economic benefits of tourism directly uplift Tanzanian families.</p>
-                    </div>
-
                 </div>
             </div>
-        </section>
+            <!-- Dots -->
+            <div class="flex justify-center gap-3 mt-6">
+                <button class="w-3 h-3 rounded-full bg-white transition-colors" data-index="0" aria-label="Slide 1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/30 transition-colors" data-index="1" aria-label="Slide 2"></button>
+                <button class="w-3 h-3 rounded-full bg-white/30 transition-colors" data-index="2" aria-label="Slide 3"></button>
+                <button class="w-3 h-3 rounded-full bg-white/30 transition-colors" data-index="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+    </div>
 
-        <!-- 5. WHY CHOOSE MAKAYO (Immersive Overlap) -->
-        <section class="py-32 bg-white relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                    
-                    <!-- Left: Feature Text & Glass List -->
-                    <div class="fade-right order-2 lg:order-1">
-                        <h2 class="font-playfair text-5xl md:text-7xl font-bold text-black mb-8 leading-tight">
-                            Why Choose <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-ocean to-forest">Makayo?</span>
-                        </h2>
-                        <p class="text-gray-600 mb-10 text-xl font-light">
-                            Because you deserve an expedition that is as unique as you are. We blend rugged adventure with uncompromising luxury.
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,105,148,0.15)] transition-shadow duration-300 flex items-center gap-6">
-                                <div class="w-14 h-14 rounded-full bg-ocean text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">1</div>
-                                <div>
-                                    <h4 class="font-bold text-xl text-black mb-1">Bespoke Itineraries</h4>
-                                    <p class="text-gray-500 text-sm">No cookie-cutter packages. Your journey is mapped exclusively for you.</p>
+    <!-- Touch/swipe & auto‑play logic for mobile values carousel -->
+    <script>
+        (function() {
+            const carousel = document.getElementById('values-carousel');
+            if (!carousel) return;
+            const cards = carousel.querySelectorAll('.w-full'); // each slide wrapper
+            const dots = document.querySelectorAll('#values-carousel + div button');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+            let autoTimer;
+
+            function updateCarousel(index) {
+                // Because each card is w-full and we have pr-3 on all but last, transform by index*100% still works perfectly
+                const offset = -index * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === index);
+                    dot.classList.toggle('bg-white/30', i !== index);
+                });
+                currentIndex = index;
+            }
+
+            function startAutoSlide() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => {
+                    const next = (currentIndex + 1) % cards.length;
+                    updateCarousel(next);
+                }, 3000); // auto‑advance every 3 seconds
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoTimer);
+            }
+
+            // Start auto‑play initially
+            startAutoSlide();
+
+            // Swipe events
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                stopAutoSlide(); // pause timer while user interacts
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 30) { // slightly lower threshold for easier swipe
+                    if (diff > 0 && currentIndex < cards.length - 1) {
+                        updateCarousel(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+                isDragging = false;
+                startAutoSlide(); // resume auto‑play after swipe
+            });
+
+            // Dot clicks
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'), 10);
+                    updateCarousel(index);
+                    stopAutoSlide();
+                    startAutoSlide(); // reset timer after manual dot click
+                });
+            });
+
+            // Also pause on hover (optional, for better UX on desktop if any)
+            carousel.addEventListener('mouseenter', stopAutoSlide);
+            carousel.addEventListener('mouseleave', startAutoSlide);
+        })();
+    </script>
+</section>
+
+
+<!-- 5. WHY CHOOSE MAKAYO (Compact Mobile Cards) -->
+<section class="py-32 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <!-- Left: Text & Mobile Carousel / Desktop List -->
+            <div class="fade-right order-2 lg:order-1">
+                <h2 class="font-playfair text-5xl md:text-7xl font-bold text-black mb-8 leading-tight">
+                    Why Choose <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-ocean to-forest">Makayo?</span>
+                </h2>
+                <p class="text-gray-600 mb-10 text-xl font-light">
+                    Because you deserve an expedition that is as unique as you are. We blend rugged adventure with uncompromising luxury.
+                </p>
+                
+                <!-- Mobile-only square image (centered, between heading and cards) -->
+                <div class="lg:hidden mb-10 flex justify-center">
+                    <div class="w-64 h-64 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                        <img src="picha/3.jpg" class="w-full h-full object-cover" alt="Luxury Safari Tent">
+                    </div>
+                </div>
+
+                <!-- Desktop List (hidden on mobile) -->
+                <div class="hidden md:block space-y-6">
+                    <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,105,148,0.15)] transition-shadow duration-300 flex items-center gap-6">
+                        <div class="w-14 h-14 rounded-full bg-ocean text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">1</div>
+                        <div>
+                            <h4 class="font-bold text-xl text-black mb-1">Bespoke Itineraries</h4>
+                            <p class="text-gray-500 text-sm">No cookie-cutter packages. Your journey is mapped exclusively for you.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(34,139,34,0.15)] transition-shadow duration-300 flex items-center gap-6">
+                        <div class="w-14 h-14 rounded-full bg-forest text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">2</div>
+                        <div>
+                            <h4 class="font-bold text-xl text-black mb-1">Elite Fleet & Guides</h4>
+                            <p class="text-gray-500 text-sm">Custom 4x4s and the most highly-certified wilderness guides in East Africa.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-shadow duration-300 flex items-center gap-6">
+                        <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">3</div>
+                        <div>
+                            <h4 class="font-bold text-xl text-black mb-1">24/7 Concierge Support</h4>
+                            <p class="text-gray-500 text-sm">From arrival to departure, our team is working invisibly to perfect your trip.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Reason Carousel (horizontal icon+heading, compact) -->
+                <div class="md:hidden relative mt-8">
+                    <div id="reasons-carousel" class="flex transition-transform duration-500 ease-out">
+                        <!-- Card 1 -->
+                        <div class="w-full flex-shrink-0 pl-4 pr-3">
+                            <div class="p-5 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 rounded-full bg-ocean text-white flex items-center justify-center font-playfair text-xl font-bold shadow-lg shrink-0">1</div>
+                                    <h4 class="font-bold text-lg text-black">Bespoke Itineraries</h4>
                                 </div>
+                                <p class="text-gray-500 text-sm">No cookie-cutter packages. Your journey is mapped exclusively for you.</p>
                             </div>
-                            <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(34,139,34,0.15)] transition-shadow duration-300 flex items-center gap-6">
-                                <div class="w-14 h-14 rounded-full bg-forest text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">2</div>
-                                <div>
-                                    <h4 class="font-bold text-xl text-black mb-1">Elite Fleet & Guides</h4>
-                                    <p class="text-gray-500 text-sm">Custom 4x4s and the most highly-certified wilderness guides in East Africa.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="w-full flex-shrink-0 pr-3">
+                            <div class="p-5 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 rounded-full bg-forest text-white flex items-center justify-center font-playfair text-xl font-bold shadow-lg shrink-0">2</div>
+                                    <h4 class="font-bold text-lg text-black">Elite Fleet & Guides</h4>
                                 </div>
+                                <p class="text-gray-500 text-sm">Custom 4x4s and the most highly-certified wilderness guides in East Africa.</p>
                             </div>
-                            <div class="p-6 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-shadow duration-300 flex items-center gap-6">
-                                <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-playfair text-2xl font-bold shadow-lg">3</div>
-                                <div>
-                                    <h4 class="font-bold text-xl text-black mb-1">24/7 Concierge Support</h4>
-                                    <p class="text-gray-500 text-sm">From arrival to departure, our team is working invisibly to perfect your trip.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="w-full flex-shrink-0 pr-4">
+                            <div class="p-5 bg-white border border-gray-100 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-playfair text-xl font-bold shadow-lg shrink-0">3</div>
+                                    <h4 class="font-bold text-lg text-black">24/7 Concierge Support</h4>
                                 </div>
+                                <p class="text-gray-500 text-sm">From arrival to departure, our team is working invisibly to perfect your trip.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Right: Massive Bleeding Image -->
-                    <div class="relative h-[800px] fade-left order-1 lg:order-2">
-                        <img src="picha/3.jpg" class="absolute inset-0 w-full h-full object-cover rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)]" alt="Luxury Safari Tent">
-                        <!-- Accent Badge -->
-                        <div class="absolute -bottom-8 -left-8 bg-black text-white p-10 rounded-[2.5rem] shadow-2xl animate-[pulse_6s_ease-in-out_infinite] hidden md:block">
-                            <span class="block font-playfair text-6xl font-black text-forest mb-2">100%</span>
-                            <span class="text-sm uppercase tracking-widest font-bold">Client Satisfaction</span>
-                        </div>
+                    <!-- Dots -->
+                    <div class="flex justify-center gap-3 mt-6">
+                        <button class="w-3 h-3 rounded-full bg-ocean transition-colors" data-index="0" aria-label="Slide 1"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 transition-colors" data-index="1" aria-label="Slide 2"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 transition-colors" data-index="2" aria-label="Slide 3"></button>
                     </div>
-
                 </div>
             </div>
-        </section>
+
+            <!-- Right: Massive Bleeding Image (hidden on mobile, shown on lg) -->
+            <div class="hidden lg:block relative h-[800px] fade-left order-1 lg:order-2">
+                <img src="picha/3.jpg" class="absolute inset-0 w-full h-full object-cover rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)]" alt="Luxury Safari Tent">
+                <div class="absolute -bottom-8 -left-8 bg-black text-white p-10 rounded-[2.5rem] shadow-2xl animate-[pulse_6s_ease-in-out_infinite]">
+                    <span class="block font-playfair text-6xl font-black text-forest mb-2">100%</span>
+                    <span class="text-sm uppercase tracking-widest font-bold">Client Satisfaction</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Swipe & dot logic for mobile reason carousel -->
+    <script>
+        (function() {
+            const carousel = document.getElementById('reasons-carousel');
+            if (!carousel) return;
+            const cards = carousel.querySelectorAll('.w-full');
+            const dots = document.querySelectorAll('#reasons-carousel + div button');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+
+            function updateCarousel(index) {
+                const offset = -index * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-ocean', i === index);
+                    dot.classList.toggle('bg-gray-300', i !== index);
+                });
+                currentIndex = index;
+            }
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 30) {
+                    if (diff > 0 && currentIndex < cards.length - 1) {
+                        updateCarousel(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+                isDragging = false;
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'), 10);
+                    updateCarousel(index);
+                });
+            });
+        })();
+    </script>
+</section>
 
         <!-- 6. MEET OUR TEAM (Editorial Portrait Cards) -->
-        <section class="py-32 bg-gray-50 relative overflow-hidden border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center mb-20 fade-up">
-                    <span class="text-ocean font-bold tracking-widest uppercase text-sm block mb-3">The Architects of Adventure</span>
-                    <h2 class="font-playfair text-6xl md:text-7xl font-bold text-black">Meet Our Team</h2>
-                </div>
+<!-- 6. MEET OUR TEAM (Mobile Carousel with side padding) -->
+<section class="py-32 bg-gray-50 relative overflow-hidden border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-20 fade-up">
+            <span class="text-ocean font-bold tracking-widest uppercase text-sm block mb-3">The Architects of Adventure</span>
+            <h2 class="font-playfair text-6xl md:text-7xl font-bold text-black">Meet Our Team</h2>
+        </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    
-                    <!-- Team Member 1 -->
-                    <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-100 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
-                        <!-- Frosted Glass Nameplate -->
-                        <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <h4 class="font-playfair text-2xl font-bold text-black">Victor Lekule</h4>
-                            <p class="text-ocean font-bold text-sm uppercase tracking-widest mb-2">Founder & CEO</p>
-                            <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+        <!-- Desktop Grid (hidden on mobile) -->
+        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Victor -->
+            <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-100 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h4 class="font-playfair text-2xl font-bold text-black">Victor Lekule</h4>
+                    <p class="text-ocean font-bold text-sm uppercase tracking-widest mb-2">Founder & CEO</p>
+                    <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                        With a lifetime spent in the Tanzanian bush, Victor ensures every itinerary meets the highest global luxury standards.
+                    </p>
+                </div>
+            </div>
+            <!-- Sarah -->
+            <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-200 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h4 class="font-playfair text-2xl font-bold text-black">Sarah Mbowe</h4>
+                    <p class="text-forest font-bold text-sm uppercase tracking-widest mb-2">Head Safari Architect</p>
+                    <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                        Sarah designs the intricate logistics of your journey, ensuring seamless transitions between camps and flights.
+                    </p>
+                </div>
+            </div>
+            <!-- Emanuel -->
+            <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h4 class="font-playfair text-2xl font-bold text-black">Emanuel Kileo</h4>
+                    <p class="text-ocean font-bold text-sm uppercase tracking-widest mb-2">Lead Head Guide</p>
+                    <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                        An encyclopedia of wildlife knowledge, Emanuel leads our elite team of drivers and trackers on the ground.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Carousel (visible only on mobile) -->
+        <div class="md:hidden relative">
+            <div id="team-carousel" class="flex transition-transform duration-500 ease-out">
+                <!-- Card Victor -->
+                <div class="w-full flex-shrink-0 pl-4 pr-3">
+                    <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-[500px] relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1500" class="w-full h-full object-cover filter grayscale" alt="Victor Lekule">
+                        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/50 p-5 rounded-[2rem]">
+                            <h4 class="font-playfair text-xl font-bold text-black">Victor Lekule</h4>
+                            <p class="text-ocean font-bold text-xs uppercase tracking-widest mb-1">Founder & CEO</p>
+                            <p class="text-gray-600 text-sm font-light">
                                 With a lifetime spent in the Tanzanian bush, Victor ensures every itinerary meets the highest global luxury standards.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Team Member 2 -->
-                    <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-200 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
-                        <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <h4 class="font-playfair text-2xl font-bold text-black">Sarah Mbowe</h4>
-                            <p class="text-forest font-bold text-sm uppercase tracking-widest mb-2">Head Safari Architect</p>
-                            <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                </div>
+                <!-- Card Sarah -->
+                <div class="w-full flex-shrink-0 pr-3">
+                    <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-[500px] relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1500" class="w-full h-full object-cover filter grayscale" alt="Sarah Mbowe">
+                        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/50 p-5 rounded-[2rem]">
+                            <h4 class="font-playfair text-xl font-bold text-black">Sarah Mbowe</h4>
+                            <p class="text-forest font-bold text-xs uppercase tracking-widest mb-1">Head Safari Architect</p>
+                            <p class="text-gray-600 text-sm font-light">
                                 Sarah designs the intricate logistics of your journey, ensuring seamless transitions between camps and flights.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Team Member 3 -->
-                    <div class="relative group h-[550px] rounded-[3rem] overflow-hidden shadow-xl fade-up delay-300 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1500" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Team Member">
-                        <div class="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <h4 class="font-playfair text-2xl font-bold text-black">Emanuel Kileo</h4>
-                            <p class="text-ocean font-bold text-sm uppercase tracking-widest mb-2">Lead Head Guide</p>
-                            <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                </div>
+                <!-- Card Emanuel -->
+                <div class="w-full flex-shrink-0 pr-4">
+                    <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-[500px] relative">
+                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1500" class="w-full h-full object-cover filter grayscale" alt="Emanuel Kileo">
+                        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/50 p-5 rounded-[2rem]">
+                            <h4 class="font-playfair text-xl font-bold text-black">Emanuel Kileo</h4>
+                            <p class="text-ocean font-bold text-xs uppercase tracking-widest mb-1">Lead Head Guide</p>
+                            <p class="text-gray-600 text-sm font-light">
                                 An encyclopedia of wildlife knowledge, Emanuel leads our elite team of drivers and trackers on the ground.
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </section>
+            <!-- Dots -->
+            <div class="flex justify-center gap-3 mt-6">
+                <button class="w-3 h-3 rounded-full bg-ocean transition-colors" data-index="0" aria-label="Slide 1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 transition-colors" data-index="1" aria-label="Slide 2"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 transition-colors" data-index="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Swipe & dot logic for team mobile carousel -->
+    <script>
+        (function() {
+            const carousel = document.getElementById('team-carousel');
+            if (!carousel) return;
+            const cards = carousel.querySelectorAll('.w-full');
+            const dots = document.querySelectorAll('#team-carousel + div button');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+
+            function updateCarousel(index) {
+                const offset = -index * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-ocean', i === index);
+                    dot.classList.toggle('bg-gray-300', i !== index);
+                });
+                currentIndex = index;
+            }
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 30) {
+                    if (diff > 0 && currentIndex < cards.length - 1) {
+                        updateCarousel(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+                isDragging = false;
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'), 10);
+                    updateCarousel(index);
+                });
+            });
+        })();
+    </script>
+</section>
 
     </main>
-    
+
+    <div id="makayo-footer"></div>
     <script src="animation.js"></script>
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanzibar Experiences | Morix Beyond Zanzibar</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#003C63',
+                        sunset: '#F27D57',
+                        luxury: '#0A1929',
+                        surface: '#F8FAFC',
+                        cardBg: '#E2E8F0'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+
+
+        /* Fixed Glass Header */
+        .glass-nav {
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* View 1: Premium Editorial Card Hover */
+        .editorial-card {
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+        }
+        .editorial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(0, 60, 99, 0.2);
+        }
+
+        /* Crossfade Slides - Strictly Object Contain */
+        .slide-img {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F1F5F9; 
+        }
+        .slide-img.active { opacity: 1; }
+        
+        .blend-image { mix-blend-mode: multiply; }
+
+        /* View 2: Full Page Native Fade Transition */
+        #view-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #F8FAFC;
+            z-index: 4000; 
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        #view-2.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="font-poppins text-slate-800 antialiased overflow-x-hidden cursor-default">
+
+
+    <div id="header-container" class="absolute w-full z-50 top-0 left-0"></div>
+
+
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: PREMIUM EDITORIAL LAYOUT -->
+    <!-- ========================================== -->
+    <main id="view-1" class="pt-[100px] min-h-screen">
+        
+        <!-- Hero Section with padding to clear header -->
+        <section class="bg-ocean text-white py-24 md:py-32 px-6">
+            <div class="max-w-[1200px] mx-auto text-center">
+                <span class="inline-block py-1 px-4 rounded-full border border-sunset/30 text-xs font-bold uppercase tracking-widest text-sunset mb-6 animate-fade-in-up">The Signature Collection</span>
+                <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
+                    ZANZIBAR <span class="italic font-light text-sunset">Experiences</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-white/60 font-light text-lg md:text-xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Immerse yourself in our carefully curated collections. Select an experience below to explore detailed itineraries, pricing, and stunning visuals.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Editorial Stack -->
+        <section class="px-6 py-20 bg-white">
+            <!-- NEW: Heading and Paragraph for View 1 -->
+            <div class="max-w-[1400px] mx-auto mb-16 text-center animate-fade-in-up">
+                <h2 class="font-playfair text-4xl md:text-5xl font-black text-ocean mb-4">Explore Our Collections</h2>
+                <p class="text-black font-light text-lg max-w-2xl mx-auto">Browse through our exclusive categories below to discover the perfect activities for your Zanzibar adventure.</p>
+            </div>
+
+            <div id="services-stack" class="max-w-[1400px] mx-auto space-y-16">
+                <!-- Javascript will inject the massive category cards here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: ACTIVITIES NATIVE PAGE (FADE IN) -->
+    <!-- ========================================== -->
+    <div id="view-2" class="pt-[100px]">
+        
+        <!-- Floating Close Button at Top Right -->
+        <button id="btn-close-view2" class="fixed top-[120px] right-6 lg:right-12 w-14 h-14 rounded-full bg-white shadow-2xl text-navy hover:text-forest hover:scale-110 transition-all z-[4020] flex items-center justify-center border border-slate-100">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+
+        <!-- Activities Content Container -->
+        <div class="px-6 py-16">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="mb-20 text-center max-w-4xl mx-auto">
+                    <h2 id="view2-main-title" class="font-playfair text-5xl md:text-7xl font-black text-navy mb-6"></h2>
+                    <p id="view2-desc" class="text-slate-500 text-lg leading-relaxed font-light"></p>
+                </div>
+                
+                <!-- JS will inject the specific activities here -->
+                <div id="activities-list" class="space-y-24"></div>
+
+                <!-- Go Back Button at the end of the Service -->
+                <div class="mt-20 text-center border-t border-slate-200 pt-16">
+                    <button id="btn-bottom-back" class="inline-flex items-center gap-3 bg-forest border border-yellow-400 text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-ocean hover:text-white transition-all shadow-sm">
+                        <i class="fa-solid fa-arrow-left"></i> Go Back to Collections
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // ⬇️ 1. DATA BLOCK: ALL SERVICES & ACTIVITIES ⬇️
+        // =========================================================================
+        const toursData = [
+            {
+                id: "water-sports",
+                category: "Water Sports",
+                icon: "fa-water",
+                description: "Dive into excitement with our thrilling water sports experiences in Zanzibar. Enjoy the perfect mix of adrenaline, fun, and breathtaking ocean views.",
+                activities: [
+                    {
+                        id: "clear-kayak",
+                        name: "Clear Kayak Photoshoot",
+                        price: "$65 / Person",
+                        icon: "fa-camera",
+                        desc: "Experience Zanzibar’s crystal-clear waters like never before. Glide over the turquoise ocean in a transparent kayak while capturing stunning, Instagram-worthy photos.",
+                        images: [
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200"
+                        ],
+                        includes: ["Clear kayak & paddle", "Professional photographer", "30 min shoot", "Edited digital photos"],
+                        excludes: ["Swimwear (available)", "Transport to beach", "Personal expenses"],
+                        itinerary: ["Meet at Nungwi Beach", "Safety briefing & gear", "Kayak session & photos", "Photo review & selection"]
+                    },
+                    {
+                        id: "jet-ski",
+                        name: "Jet Ski Adventure",
+                        price: "$80 / Session",
+                        icon: "fa-bolt",
+                        desc: "Feel the adrenaline as you ride across the Indian Ocean on a high-speed jet ski. Offers the perfect mix of excitement, freedom, and breathtaking views.",
+                        images: [
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200"
+                        ],
+                        includes: ["Jet ski rental (15 min)", "Life jacket", "Instructor guidance", "Safety equipment"],
+                        excludes: ["GoPro rental", "Food & drinks", "Hotel transfer"],
+                        itinerary: ["Check-in at water sports center", "Safety demo & practice", "Guided jet ski ride", "Free time & photos"]
+                    },
+                    {
+                        id: "jet-car",
+                        name: "Jet Car Experience",
+                        price: "$120 / Ride",
+                        icon: "fa-car-side",
+                        desc: "Drive a luxury-style “car” on water in this one-of-a-kind experience. The Jet Car combines speed, style, and fun — giving you a unique way to explore the ocean.",
+                        images: [
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200"
+                        ],
+                        includes: ["Jet car ride (20 min)", "Life vest", "Brief training", "Spectacular ocean views"],
+                        excludes: ["Camera gear", "Snacks", "Souvenirs"],
+                        itinerary: ["Arrival & registration", "Vehicle walkaround", "Ocean drive experience", "Return & debrief"]
+                    }
+                ]
+            },
+            {
+                id: "ocean-experiences",
+                category: "Ocean Experiences",
+                icon: "fa-anchor",
+                description: "Explore the beauty of Zanzibar’s crystal-clear waters with unforgettable ocean experiences.",
+                activities: [
+                    {
+                        name: "Nakupenda Sandbank",
+                        price: "$45 / Person",
+                        icon: "fa-umbrella-beach",
+                        desc: "Relax on a stunning white sandbank surrounded by crystal-clear waters. Enjoy sunbathing, swimming, and a fresh seafood lunch.",
+                        images: [
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200"
+                        ],
+                        includes: ["Boat transfer", "Fresh seafood lunch", "Soft drinks", "Beach umbrella"],
+                        excludes: ["Alcoholic beverages", "Snorkel gear (rental available)", "Towels"],
+                        itinerary: ["Departure from Stone Town", "Scenic boat ride", "Time on sandbank", "Lunch & swimming", "Return"]
+                    },
+                    {
+                        name: "Safari Blue Experience",
+                        price: "$75 / Person",
+                        icon: "fa-sailboat",
+                        desc: "A full-day ocean adventure featuring snorkeling, dhow sailing, swimming in natural lagoons, and a delicious seafood feast.",
+                        images: [
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Dhow cruise", "Snorkeling gear", "Seafood BBQ lunch", "Fruits & drinks"],
+                        excludes: ["Underwater camera", "Tips", "Hotel pickup (can be added)"],
+                        itinerary: ["Morning dhow departure", "Snorkeling at coral reef", "Visit sandbank", "BBQ lunch on board", "Sail back"]
+                    },
+                    {
+                        name: "Dolphin Tours",
+                        price: "$70 / Person",
+                        icon: "fa-fish-fins",
+                        desc: "Swim alongside wild dolphins in their natural habitat. This early morning experience offers a magical opportunity to connect with nature.",
+                        images: [
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200"
+                        ],
+                        includes: ["Boat trip", "Guide", "Snorkeling mask", "Life jacket"],
+                        excludes: ["Fins (available to rent)", "Breakfast", "Transport to Kizimkazi"],
+                        itinerary: ["Early departure (6am)", "Dolphin spotting & swim", "Breakfast stop (optional)", "Return to shore"]
+                    },
+                    {
+                        name: "Snorkeling Trips",
+                        price: "$55 / Person",
+                        icon: "fa-water",
+                        desc: "Explore vibrant coral reefs and marine life beneath the surface. Perfect for beginners and experienced swimmers.",
+                        images: [
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200"
+                        ],
+                        includes: ["Boat trip", "Snorkeling gear", "Guide", "Fruits & water"],
+                        excludes: ["Underwater camera", "Towels", "Hotel transfer"],
+                        itinerary: ["Departure from beach", "Reef introduction", "Guided snorkeling", "Relaxation & swimming", "Return"]
+                    },
+                    {
+                        name: "Sunset Cruise",
+                        price: "$65 / Person",
+                        icon: "fa-sun",
+                        desc: "Sail into the golden hour on a traditional dhow boat while enjoying the breathtaking Zanzibar sunset.",
+                        images: [
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200"
+                        ],
+                        includes: ["Dhow cruise", "Soft drinks", "Snacks", "Romantic ambiance"],
+                        excludes: ["Alcoholic drinks (BYO)", "Transport", "Gratuities"],
+                        itinerary: ["Afternoon boarding", "Sail along coast", "Sunset viewing", "Return after dark"]
+                    }
+                ]
+            },
+            {
+                id: "nature-adventure",
+                category: "Nature & Adventure",
+                icon: "fa-leaf",
+                description: "Discover the wild side of Zanzibar through immersive nature and adventure tours.",
+                activities: [
+                    {
+                        name: "Jozani Forest Tour",
+                        price: "$35 / Person",
+                        icon: "fa-tree",
+                        desc: "Discover Zanzibar’s only national park, home to the rare red colobus monkeys. Walk through lush forest trails and mangroves.",
+                        images: [
+                            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1547471080-7fc2caa6f17f?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200"
+                        ],
+                        includes: ["Park entry fee", "Professional guide", "Walking tour", "Water bottle"],
+                        excludes: ["Transport to Jozani", "Snacks", "Tips"],
+                        itinerary: ["Arrive at Jozani Gate", "Briefing & rules", "Forest trail walk", "Mangrove boardwalk", "Monkey sightings"]
+                    },
+                    {
+                        name: "Salaam Cave Experience",
+                        price: "$35 / Person",
+                        icon: "fa-dungeon",
+                        desc: "Swim in a natural cave pool with crystal-clear water surrounded by rock formations with turtles.",
+                        images: [
+                            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1547471080-7fc2caa6f17f?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200"
+                        ],
+                        includes: ["Cave entrance", "Life vest (optional)", "Guide", "Fresh water shower"],
+                        excludes: ["Swimming costume", "Camera", "Food"],
+                        itinerary: ["Meet at cave entrance", "Descend into the cave", "Swim & explore", "Relax & photos", "Exit"]
+                    }
+                ]
+            },
+            {
+                id: "culture-history",
+                category: "Cultural & Lifestyle",
+                icon: "fa-landmark",
+                description: "Step into the heart of Zanzibar’s rich culture and history. Explore ancient streets and visit iconic landmarks.",
+                activities: [
+                    {
+                        name: "Stone Town Tour",
+                        price: "$30 / Person",
+                        icon: "fa-city",
+                        desc: "Explore the historic heart of Zanzibar, a UNESCO World Heritage Site. Walk through narrow streets and discover ancient architecture.",
+                        images: [
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Guided walking tour", "Entrance fees", "Map"],
+                        excludes: ["Lunch", "Transport", "Personal shopping"],
+                        itinerary: ["Start at House of Wonders", "Old Fort & Forodhani", "Freddie Mercury House", "Spice Market", "Optional lunch"]
+                    },
+                    {
+                        name: "Prison Island Tour",
+                        price: "$75 / Person",
+                        icon: "fa-bridge-water",
+                        desc: "Visit this beautiful island known for its giant tortoises and stunning ocean views.",
+                        images: [
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Boat transfer", "Entrance fee", "Guide"],
+                        excludes: ["Snorkeling gear", "Drinks", "Tips"],
+                        itinerary: ["Boat from Stone Town", "Island history tour", "Tortoise sanctuary", "Beach time & snorkeling", "Return"]
+                    },
+                    {
+                        name: "Spice Farm Tour",
+                        price: "$50 / Person",
+                        icon: "fa-pepper-hot",
+                        desc: "Experience why Zanzibar is called the “Spice Island.” See, smell, and taste fresh spices and tropical fruits.",
+                        images: [
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Farm tour", "Fresh fruit tasting", "Spice guide", "Coconut water"],
+                        excludes: ["Transport", "Lunch", "Spice purchases"],
+                        itinerary: ["Welcome & introduction", "Walk through spice plots", "Tasting session", "Cooking demo", "Shopping opportunity"]
+                    },
+                    {
+                        name: "Local Market Experience",
+                        price: "$30 / Person",
+                        icon: "fa-store",
+                        desc: "Immerse yourself in everyday Zanzibar life by visiting a bustling local market.",
+                        images: [
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Market walking tour", "Local guide", "Tasting samples"],
+                        excludes: ["Purchases", "Transport", "Tips"],
+                        itinerary: ["Meet at Darajani Market", "Explore spice & fruit stalls", "Visit fish & meat sections", "Optional snack break", "Finish at souvenir lane"]
+                    },
+                    {
+                        name: "The Rock Restaurant",
+                        price: "$100+ / Person",
+                        icon: "fa-utensils",
+                        desc: "Dine at Zanzibar’s most iconic restaurant, located on a rock in the ocean.",
+                        images: [
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1589307222736-224ed52e8d19?q=80&w=1200"
+                        ],
+                        includes: ["Reservation assistance", "Boat transfer", "Welcome drink"],
+                        excludes: ["Meal cost", "Additional drinks", "Transport to the beach"],
+                        itinerary: ["Arrive at Michamvi beach", "Boat or walk to restaurant", "Scenic dining experience", "Return to shore"]
+                    }
+                ]
+            },
+            {
+                id: "special-luxury",
+                category: "Special & Luxury",
+                icon: "fa-gem",
+                description: "Indulge in the finest Zanzibar has to offer with our exclusive luxury experiences.",
+                activities: [
+                    {
+                        name: "Flying Dress Photoshoot",
+                        price: "$200 / Person",
+                        icon: "fa-camera-retro",
+                        desc: "Feel like royalty as you pose in a flowing gown on Zanzibar’s stunning beaches.",
+                        images: [
+                            "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=1200"
+                        ],
+                        includes: ["Designer flying dress", "Professional photographer", "50+ edited photos", "Assistant"],
+                        excludes: ["Hair & makeup", "Additional outfits", "Transport"],
+                        itinerary: ["Meet at beach location", "Dress selection & styling", "Photoshoot session", "Photo review"]
+                    },
+                    {
+                        name: "Romantic & Proposal",
+                        price: "$350 / Setup",
+                        icon: "fa-heart",
+                        desc: "Celebrate love with beautifully designed beach setups, perfect for proposals or anniversaries.",
+                        images: [
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200"
+                        ],
+                        includes: ["Decor setup", "Private dinner", "Photographer", "Bottle of sparkling"],
+                        excludes: ["Ring 😉", "Transport", "Additional guests"],
+                        itinerary: ["Pre-arrangement consultation", "Beach setup", "Your special moment", "Dinner & photos"]
+                    },
+                    {
+                        name: "Drone Photography",
+                        price: "$180 / Session",
+                        icon: "fa-helicopter",
+                        desc: "Capture your experience from a breathtaking aerial perspective with our drone services.",
+                        images: [
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1520641151676-e1ce157cd557?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1518182170546-0766de6b6aad?q=80&w=1200",
+                            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200"
+                        ],
+                        includes: ["Licensed drone pilot", "20 min flight", "Edited video clip", "10 high-res photos"],
+                        excludes: ["RAW files", "Extra flight time", "Transport"],
+                        itinerary: ["Scout location", "Safety check", "Drone flight", "Footage delivery"]
+                    }
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // ⚙️ 2. RENDERING LOGIC ⚙️
+        // =========================================================================
+        const stackContainer = document.getElementById('services-stack');
+        const view2 = document.getElementById('view-2');
+        let view1Intervals = [];
+        let view2Intervals = [];
+
+        // RENDER VIEW 1 (Large Premium Editorial Cards)
+        function buildView1() {
+            toursData.forEach((service, index) => {
+                const isEven = index % 2 === 0;
+
+                const coverImages = service.activities[0].images;
+                const slidesHtml = coverImages.map((img, i) => `
+                    <div class="slide-img ${i === 0 ? 'active' : ''}">
+                        <img src="${img}" class="w-full h-full object-contain blend-image p-6" alt="${service.category}">
+                    </div>
+                `).join('');
+
+                const html = `
+                    <div class="editorial-card bg-gray/50 rounded-[2rem] shadow-sm border border-slate-200 overflow-hidden flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} cursor-pointer group btn-open-category" data-id="${service.id}">
+                        
+                        <!-- Auto-fading Full Size Container -->
+                        <div class="w-full lg:w-3/5 h-[350px] lg:h-[450px] relative overflow-hidden wrapper-v1 bg-black/10">
+                            ${slidesHtml}
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+
+                        <!-- Card Info -->
+                        <div class="w-full lg:w-2/5 p-10 md:p-16 flex flex-col justify-center bg-white relative z-10">
+                            <div class="w-14 h-14 rounded-full bg-ocean flex items-center justify-center text-yellow-400 text-2xl mb-8">
+                                <i class="fa-solid ${service.icon}"></i>
+                            </div>
+                            <h2 class="font-playfair text-4xl md:text-5xl font-black text-ocean mb-6 leading-tight">${service.category}</h2>
+                            <p class="text-black font-light leading-relaxed mb-10 text-lg">${service.description}</p>
+                            
+                            <!-- NEW: Styled as a proper button with hover -->
+                            <div class="mt-auto inline-flex items-center justify-center gap-3 bg-ocean text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest group-hover:bg-black transition-colors shadow-md self-start w-max">
+                                Explore ${service.activities.length} Activities <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                stackContainer.insertAdjacentHTML('beforeend', html);
+            });
+
+            startView1Carousels();
+        }
+
+        // AUTO-ANIMATE IMAGES IN VIEW 1
+        function startView1Carousels() {
+            const wrappers = document.querySelectorAll('.wrapper-v1');
+            wrappers.forEach(wrapper => {
+                const slides = wrapper.querySelectorAll('.slide-img');
+                if(slides.length <= 1) return;
+                let current = 0;
+                
+                const interval = setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, 3000 + (Math.random() * 1000));
+                view1Intervals.push(interval);
+            });
+        }
+
+        // RENDER VIEW 2 (Lists all activities inside the selected Service)
+        function openCategory(id) {
+            const service = toursData.find(s => s.id === id);
+            if (!service) return;
+
+            document.getElementById('view2-main-title').innerText = service.category;
+            document.getElementById('view2-desc').innerText = service.description;
+
+            const listContainer = document.getElementById('activities-list');
+            
+            listContainer.innerHTML = service.activities.map((act, idx) => {
+                const isEven = idx % 2 === 0;
+                
+                const includesList = act.includes.map(i => `<li>${i}</li>`).join('');
+                const excludesList = act.excludes.map(i => `<li>${i}</li>`).join('');
+                const itineraryList = act.itinerary.map((i, stepIdx) => `
+                    <li class="relative">
+                        <span class="absolute -left-[29px] top-1 w-3 h-3 rounded-full border-2 border-sunset bg-white"></span>
+                        <strong class="text-sunset text-xs mr-2">0${stepIdx+1}.</strong> ${i}
+                    </li>
+                `).join('');
+
+                const slidesHtml = act.images.map((img, i) => `
+                    <div class="slide-img ${i === 0 ? 'active' : ''}">
+                        <img src="${img}" class="w-full h-full object-contain blend-image drop-shadow-xl p-8" alt="${act.name}">
+                    </div>
+                `).join('');
+
+                return `
+                    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-200 overflow-hidden flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} mb-16">
+                        
+                        <!-- Left: 5 Fading Images (Strictly Object Contain) -->
+                        <div class="w-full lg:w-1/2 h-[400px] lg:h-auto relative bg-[#F1F5F9] border-b lg:border-b-0 ${isEven ? 'lg:border-r' : 'lg:border-l'} border-slate-200 wrapper-v2">
+                            ${slidesHtml}
+                            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/10 px-3 py-2 rounded-full backdrop-blur-md">
+                                ${act.images.map((_, i) => `<div class="w-2 h-2 rounded-full transition-colors ${i === 0 ? 'bg-white' : 'bg-white/40'} indicator-${i}"></div>`).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Right: Info Details -->
+                        <div class="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="w-12 h-12 rounded-full bg-ocean flex items-center justify-center text-yellow-400 text-lg shadow-md shrink-0">
+                                    <i class="fa-solid ${act.icon}"></i>
+                                </div>
+                                <!-- Removed the price from the top, moved to the bottom -->
+                            </div>
+                            
+                            <h3 class="font-playfair text-3xl md:text-5xl font-black text-ocean mb-4 leading-tight">${act.name}</h3>
+                            <p class="text-black font-light leading-relaxed mb-10 text-lg">${act.desc}</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                                <div class="bg-surface p-6 rounded-2xl border border-forest">
+                                    <h4 class="font-black text-ocean uppercase text-[10px] tracking-widest mb-4 flex items-center gap-2">
+                                        <i class="fa-solid fa-check text-black text-sm"></i> Included
+                                    </h4>
+                                    <ul class="space-y-2 text-xs text-slate-600 font-medium">${includesList}</ul>
+                                </div>
+                                <div class="bg-surface p-6 rounded-2xl border border-forest">
+                                    <h4 class="font-black text-ocean uppercase text-[10px] tracking-widest mb-4 flex items-center gap-2">
+                                        <i class="fa-solid fa-xmark text-black text-sm"></i> Excluded
+                                    </h4>
+                                    <ul class="space-y-2 text-xs text-slate-500">${excludesList}</ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-ocean p-10 rounded-3xl text-white mb-10 shadow-2xl relative overflow-hidden">
+                                <i class="fa-solid fa-route absolute -right-4 top-4 text-7xl text-white/50 pointer-events-none"></i>
+                                <h4 class="font-black text-yellow-400 uppercase text-xs tracking-widest mb-6 flex items-center"><i class="fa-solid fa-map-location-dot mr-3 text-lg"></i> Itinerary</h4>
+                                <ol class="space-y-5 text-sm font-light border-l border-yellow-400  pl-6 ml-1 relative z-10">${itineraryList}</ol>
+                            </div>
+
+                            <!-- NEW: Price at the bottom next to Add to Booking -->
+                            <div class="mt-auto pt-8 border-t border-yellow-400 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                <div class="text-center sm:text-left">
+                                    <span class="block text-[10px] font-bold text-forest uppercase tracking-widest mb-1">Package Price</span>
+                                    <span class="font-playfair text-3xl font-black text-forest">${act.price}</span>
+                                </div>
+                                <a href="https://wa.me/255XXXXXXXXX" class="w-full sm:w-auto text-center bg-ocean text-white px-10 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-forest transition-colors shadow-xl">
+                                    Add to My Booking
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Start all 5-image carousels in View 2
+            startView2Carousels();
+
+            // Fade the page in Native Style
+            view2.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+            view2.scrollTop = 0;
+        }
+
+        // Handle auto-fading images for ALL activities inside View 2
+        function startView2Carousels() {
+            view2Intervals.forEach(clearInterval);
+            view2Intervals = [];
+
+            const wrappers = document.querySelectorAll('#activities-list .wrapper-v2');
+            wrappers.forEach(wrapper => {
+                const slides = wrapper.querySelectorAll('.slide-img');
+                const dots = wrapper.querySelectorAll('[class*="indicator-"]');
+                if(slides.length <= 1) return;
+                
+                let current = 0;
+                const interval = setInterval(() => {
+                    slides[current].classList.remove('active');
+                    dots[current].classList.remove('bg-white');
+                    dots[current].classList.add('bg-white/40');
+                    
+                    current = (current + 1) % slides.length;
+                    
+                    slides[current].classList.add('active');
+                    dots[current].classList.remove('bg-white/40');
+                    dots[current].classList.add('bg-white');
+                }, 3000 + (Math.random() * 500)); 
+                
+                view2Intervals.push(interval);
+            });
+        }
+
+        function closeCategory() {
+            view2.classList.remove('open');
+            view2Intervals.forEach(clearInterval);
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 500); 
+        }
+
+        // =========================================================================
+        // 🚀 3. INITIALIZATION & EVENTS
+        // =========================================================================
+        buildView1();
+
+        document.body.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-open-category');
+            if (btn) {
+                e.preventDefault();
+                openCategory(btn.dataset.id);
+            }
+            if (e.target.closest('#btn-close-view2') || e.target.closest('#btn-bottom-back')) {
+                e.preventDefault();
+                closeCategory();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && view2.classList.contains('open')) closeCategory();
+        });
+
+    </script>
+
+<div id="makayo-footer"></div>
+    <script src="animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

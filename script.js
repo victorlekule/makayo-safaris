@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const headerHTML = `
         <!-- Fixed Header Wrapper -->
-        <header class="fixed top-0 left-0 w-full z-50 shadow-md flex flex-col">
+        <header class="fixed top-0 left-0 w-full z-50 shadow-md flex flex-col cursor-default">
             
             <!-- FIRST HEADER: Top Bar (Changed to Green Background) -->
             <!-- Using bg-forest for the green background -->
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="w-full flex justify-between items-center gap-8">
                     
                     <!-- Left Side: Contact -->
-                    <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-8 pl-6 pr-8">
                         <a href="https://wa.me/255XXXXXXXXX" class="hover:text-gray-200 flex items-center gap-2 transition-colors">
                             <!-- Flat Solid WhatsApp Icon -->
                             <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <!-- Right Side: Links & Language Toggle -->
                     <div class="flex items-center gap-8">
                         <div class="hidden md:flex gap-6 border-r border-green-800 pr-8">
-                            <a href="#" class="hover:text-gray-200 transition-colors">FAQs</a>
-                            <a href="#" class="hover:text-gray-200 transition-colors">Privacy</a>
-                            <a href="#" class="hover:text-gray-200 transition-colors">Terms & Conditions</a>
+                            <a href="faq.html" class="hover:text-gray-200 transition-colors">FAQs</a>
+                            <a href="privacy.html" class="hover:text-gray-200 transition-colors">Privacy</a>
+                            <a href="terms.html" class="hover:text-gray-200 transition-colors">Terms & Conditions</a>
                         </div>
                         
                         <!-- Language Switcher Dropdown Container -->
@@ -89,12 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <!-- SECOND HEADER: Main Navigation -->
             <nav class="bg-white border-b border-gray-200 w-full">
-                <div class="w-full pl-[2px] pr-4 sm:pr-6 lg:pr-8">
+                <div class="w-full pl-[6px] pr-4 sm:pr-6 lg:pr-8">
                     <div class="flex justify-between items-center h-16 sm:h-20 w-full">
                         
                         <!-- LOGO -->
                         <div class="flex-1 flex justify-start">
-                            <a href="#" class="font-playfair font-bold text-xl md:text-2xl tracking-wide uppercase text-black">
+                            <a href="#" class="font-playfair font-bold pl-6 text-xl md:text-2xl tracking-wide uppercase text-black">
                                 Makayo <span class="text-ocean">Safaris</span>
                             </a>
                         </div>
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <!-- Mobile Navigation Dropdown -->
-                <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0">
+                <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 cursor-default">
                     <div class="px-4 py-3 space-y-1 pb-6">
                         <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-ocean bg-blue-50">Home</a>
                         <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:text-ocean hover:bg-gray-50">About Us</a>
@@ -459,3 +459,115 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     
+
+    //footer//
+
+  // Insert footer into a container with id="makayo-footer"
+  document.getElementById('makayo-footer').innerHTML = `
+    <footer class="bg-ocean text-white pt-20 pb-10 px-6 lg:px-12 font-sans">
+      <div class="max-w-auto mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">
+          
+          <!-- Column 1: About Makayo -->
+          <div class="col-span-2 md:col-span-1">
+            <h4 class="font-display text-xl font-bold mb-4 text-sunset">Makayo Safaris</h4>
+            <p class="text-white text-sm leading-relaxed">
+              Makayo is your premier East African travel curator, specializing in unforgettable Tanzanian safaris and Zanzibar island experiences. We craft journeys that connect you with nature, culture, and luxury.
+            </p>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div>
+            <h4 class="font-display text-xl font-bold mb-4 text-sunset">Quick Links</h4>
+            <ul class="space-y-2 text-sm text-white ">
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Home</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">About</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Gallery</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Blog</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Booking</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Tanzania Safaris -->
+          <div>
+            <h4 class="font-display text-xl font-bold mb-4 text-sunset">Tanzania Safaris</h4>
+            <ul class="space-y-2 text-sm text-white ">
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Serengeti Safari</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Ngorongoro Crater</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Tarangire National Park</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Lake Manyara</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Mount Kilimanjaro</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Zanzibar Experiences -->
+          <div>
+            <h4 class="font-display text-xl font-bold mb-4 text-sunset">Zanzibar Experiences</h4>
+            <ul class="space-y-2 text-sm text-white ">
+              <li><a href="#" class="hover:text-sunset transition-colors">Stone Town Tour</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Prison Island</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Spice Farm Tour</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Nakupenda Sandbank</a></li>
+              <li><a href="#" class="hover:text-yellow-400 transition-colors">Sunset Cruise</a></li>
+            </ul>
+          </div>
+
+         <div>
+            <h4 class="font-display text-xl font-bold mb-4 text-white">Follow Us</h4>
+            <div class="space-y-3">
+              <a href="#" class="flex items-center gap-3 text-white hover:text-yellow-400 transition-colors text-sm">
+                <i class="fa-brands fa-facebook text-lg w-5 text-center"></i> Facebook
+              </a>
+              <a href="#" class="flex items-center gap-3 text-white hover:text-yellow-400 transition-colors text-sm">
+                <i class="fa-brands fa-instagram text-lg w-5 text-center"></i> Instagram
+              </a>
+              <a href="#" class="flex items-center gap-3 text-white hover:text-yellow-400 transition-colors text-sm">
+                <i class="fa-brands fa-tiktok text-lg w-5 text-center"></i> TikTok
+              </a>
+              <a href="#" class="flex items-center gap-3 text-white hover:text-yellow-400 transition-colors text-sm">
+                <i class="fa-brands fa-linkedin-in text-lg w-5 text-center"></i> LinkedIn
+              </a>
+            </div>
+            
+          </div>
+
+          <!-- Column 6: Get in Touch -->
+          <div class="col-span-2 md:col-span-1">
+            <h4 class="font-display text-xl font-bold mb-4 text-white">Get in Touch</h4>
+            <ul class="space-y-3 text-sm text-white">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-location-dot mt-1 text-sunset"></i>
+                <span>123 Arusha, Tanzania</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-phone text-white"></i>
+                <a href="tel:+255123456789" class="hover:text-yellow-400 transition-colors">+255 123 456 789</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-envelope text-white"></i>
+                <a href="mailto:info@makayo.com" class="hover:text-yellow-400 transition-colors">info@makayo.com</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-clock text-white"></i>
+                <span>Mon – Sun: 8:00 AM – 6:00 PM</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-white pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white">
+          <div class="flex flex-wrap gap-4 mb-4 md:mb-0">
+            <span>&copy; ${new Date().getFullYear()} Makayo. All rights reserved.</span>
+            <a href="privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms & Conditions</a>
+          </div>
+          <div>
+            <span class="text-yellow-400 font-bold">Powered by <a href="#" class="text-white hover:underline">Africana Tech</a></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  `;
